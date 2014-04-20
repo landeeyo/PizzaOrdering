@@ -9,11 +9,11 @@ using Xunit;
 
 namespace Landeeyo.Pizza.Test.Unit.AccountControl
 {
-    public class AccountControlTest
+    public class AccountControlMockedTest
     {
         private Mock<IAccountControl> _accountControl;
 
-        public AccountControlTest()
+        public AccountControlMockedTest()
         {
             _accountControl = new Mock<IAccountControl>();
         }
@@ -25,10 +25,10 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             string password = "TestPassword";
 
             _accountControl.Setup(x => x.AuthorizeUser(login, password)).Returns(true);
-            _accountControl.Setup(x => x.AuthorizeUser(null, null)).Returns(false);
 
             Assert.True(_accountControl.Object.AuthorizeUser(login, password));
             Assert.False(_accountControl.Object.AuthorizeUser(null, null));
+            Assert.False(_accountControl.Object.AuthorizeUser("test", "test"));
         }
     }
 }

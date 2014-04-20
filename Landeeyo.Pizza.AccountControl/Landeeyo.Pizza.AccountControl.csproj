@@ -40,11 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IAccountControl.cs" />
+    <Compile Include="Interfaces\Implementations\NotImplementedAccountControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\Implementations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Landeeyo.Pizza.Common\Landeeyo.Pizza.Common.csproj">
       <Project>{ebaa70e4-6fc7-40ff-ba50-942ac84fc9b3}</Project>
