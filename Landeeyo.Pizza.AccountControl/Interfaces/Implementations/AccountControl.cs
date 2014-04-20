@@ -3,7 +3,7 @@ using System;
 
 namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
 {
-    public class NotImplementedAccountControl : IAccountControl
+    public class AccountControl : IAccountControl
     {
         public bool AuthorizeUser(string login, string password)
         {
@@ -14,7 +14,6 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
         {
             throw new NotImplementedException();
         }
-
 
         public DataAccessLayer.IDataAccess SetDataSource
         {

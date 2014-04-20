@@ -1,10 +1,5 @@
 ﻿using Landeeyo.Pizza.AccountControl.Interfaces;
 using Landeeyo.Pizza.Common.Models.AccountControl;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
 {
@@ -37,6 +32,11 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
                 user.IsAuthorized = false;
                 return;
             }
+        }
+
+        public DataAccessLayer.IDataAccess SetDataSource
+        {
+            set { throw new System.NotImplementedException(); }
         }
     }
 }

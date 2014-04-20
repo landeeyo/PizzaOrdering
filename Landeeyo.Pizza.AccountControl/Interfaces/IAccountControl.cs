@@ -1,4 +1,5 @@
 ﻿using Landeeyo.Pizza.Common.Models.AccountControl;
+using Landeeyo.Pizza.DataAccessLayer;
 
 namespace Landeeyo.Pizza.AccountControl.Interfaces
 {
@@ -20,5 +21,10 @@ namespace Landeeyo.Pizza.AccountControl.Interfaces
         /// </summary>
         /// <returns>True if created successfully, false if not</returns>
         void CreateAccount(User user);
+
+        /// <summary>
+        /// Sets data source
+        /// </summary>
+        IDataAccess SetDataSource { set; }
     }
 }

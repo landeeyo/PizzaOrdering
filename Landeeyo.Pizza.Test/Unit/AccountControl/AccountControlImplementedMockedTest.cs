@@ -2,11 +2,6 @@
 using Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations;
 using Landeeyo.Pizza.Common.Models.AccountControl;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Landeeyo.Pizza.Test.Unit.AccountControl

@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IAccountControl.cs" />
+    <Compile Include="Interfaces\Implementations\AccountControl.cs" />
     <Compile Include="Interfaces\Implementations\MockedAccountControl.cs" />
     <Compile Include="Interfaces\Implementations\NotImplementedAccountControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,6 +50,10 @@
     <ProjectReference Include="..\Landeeyo.Pizza.Common\Landeeyo.Pizza.Common.csproj">
       <Project>{ebaa70e4-6fc7-40ff-ba50-942ac84fc9b3}</Project>
       <Name>Landeeyo.Pizza.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Landeeyo.Pizza.DataAccess\Landeeyo.Pizza.DataAccess.csproj">
+      <Project>{04517626-0bf3-4134-a1e0-31cf60769195}</Project>
+      <Name>Landeeyo.Pizza.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
