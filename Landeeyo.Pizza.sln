@@ -5,9 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landeeyo.Pizza.Presentation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landeeyo.Pizza.DataAccess", "Landeeyo.Pizza.DataAccess\Landeeyo.Pizza.DataAccess.csproj", "{04517626-0BF3-4134-A1E0-31CF60769195}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landeeyo.Pizza.Authorization", "Landeeyo.Pizza.Authorization\Landeeyo.Pizza.Authorization.csproj", "{ABCA16DE-B55C-4758-B1C5-4B468655F115}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landeeyo.Pizza.AccountControl", "Landeeyo.Pizza.AccountControl\Landeeyo.Pizza.AccountControl.csproj", "{ABCA16DE-B55C-4758-B1C5-4B468655F115}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landeeyo.Pizza.Test", "Landeeyo.Pizza.Test\Landeeyo.Pizza.Test.csproj", "{13475306-095A-4E60-9789-CFDB5B3AA547}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landeeyo.Pizza.Common", "Landeeyo.Pizza.Common\Landeeyo.Pizza.Common.csproj", "{EBAA70E4-6FC7-40FF-BA50-942AC84FC9B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{13475306-095A-4E60-9789-CFDB5B3AA547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13475306-095A-4E60-9789-CFDB5B3AA547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13475306-095A-4E60-9789-CFDB5B3AA547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBAA70E4-6FC7-40FF-BA50-942AC84FC9B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBAA70E4-6FC7-40FF-BA50-942AC84FC9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBAA70E4-6FC7-40FF-BA50-942AC84FC9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBAA70E4-6FC7-40FF-BA50-942AC84FC9B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
