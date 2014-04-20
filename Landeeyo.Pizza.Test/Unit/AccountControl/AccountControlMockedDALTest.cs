@@ -16,7 +16,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
 
         public AccountControlMockedDALTest()
         {
-            _accountControl = new MockedAccountControl();
+            _accountControl = new SimpleAccountControl();
             _dataAccessMock = new Mock<IDataAccess>();
         }
 

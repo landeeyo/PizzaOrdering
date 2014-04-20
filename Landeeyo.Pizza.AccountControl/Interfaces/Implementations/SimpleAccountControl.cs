@@ -3,7 +3,7 @@ using System;
 
 namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
 {
-    public class AccountControl : IAccountControl
+    public class SimpleAccountControl : IAccountControl
     {
         public bool AuthorizeUser(string login, string password)
         {
