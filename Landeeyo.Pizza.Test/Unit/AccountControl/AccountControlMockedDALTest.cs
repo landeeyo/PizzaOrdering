@@ -46,5 +46,43 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             Assert.True(result1);
             Assert.False(result2);
         }
+
+        [Fact]
+        public void CreateUser()
+        {
+            //arrange
+            string storedLogin = "TestLogin";
+            string storedPassword = "TestPassword";
+
+            User properUser = new User()
+            {
+                Login = "TestUser01",
+                Password = "TestPassword01"
+            };
+            User improperUser = new User()
+            {
+                Login = "TestLogin",
+                Password = "TestPassword"
+            };
+
+            _dataAccessMock
+                .Setup(x => x.GetUsers)
+                .Returns(new List<User>() { 
+                    new User {
+                        Login = storedLogin, 
+                        Password = storedPassword
+                    }}.AsQueryable());
+            _accountControl.SetDataSource = _dataAccessMock.Object;
+
+            //act
+            _accountControl.CreateAccount(properUser);
+            var result1 = properUser.IsAuthorized;
+            _accountControl.CreateAccount(improperUser);
+            var result2 = improperUser.IsAuthorized;
+
+            //assert
+            Assert.True(result1);
+            Assert.False(result2);
+        }
     }
 }
