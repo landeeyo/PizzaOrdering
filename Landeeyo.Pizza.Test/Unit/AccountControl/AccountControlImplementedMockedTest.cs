@@ -42,9 +42,9 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
 
             //act
             _accountControl.CreateAccount(improperUser);
-            var result1 = improperUser.IsAuthorized;
+            var result1 = improperUser.UserID.HasValue;
             _accountControl.CreateAccount(properUser);
-            var result2 = properUser.IsAuthorized;
+            var result2 = properUser.UserID.HasValue;
 
             //assert
             Assert.False(result1);

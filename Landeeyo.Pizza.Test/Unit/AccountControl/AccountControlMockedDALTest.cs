@@ -1,5 +1,6 @@
 ﻿using Landeeyo.Pizza.AccountControl.Interfaces;
 using Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations;
+using Landeeyo.Pizza.Common.Exceptions.AccountControl;
 using Landeeyo.Pizza.Common.Models.AccountControl;
 using Landeeyo.Pizza.DataAccessLayer;
 using Moq;
@@ -72,17 +73,23 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
                         Login = storedLogin, 
                         Password = storedPassword
                     }}.AsQueryable());
+            _dataAccessMock
+                .Setup(x => x.AddUser(properUser))
+                .Returns(2);
+                
             _accountControl.SetDataSource = _dataAccessMock.Object;
 
             //act
             _accountControl.CreateAccount(properUser);
-            var result1 = properUser.IsAuthorized;
-            _accountControl.CreateAccount(improperUser);
-            var result2 = improperUser.IsAuthorized;
+            var result1 = properUser.UserID.HasValue;
 
             //assert
             Assert.True(result1);
-            Assert.False(result2);
+            Assert.Throws<UserExistsException>(
+                delegate
+                {
+                    _accountControl.CreateAccount(improperUser);
+                });
         }
     }
 }

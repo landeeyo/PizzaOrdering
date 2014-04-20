@@ -23,13 +23,13 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             {
                 if (user.Login == "TestLogin" && user.Password.Length > 0)
                 {
-                    user.IsAuthorized = true;
+                    user.UserID = 1;
                     return;
                 }
             }
             else
             {
-                user.IsAuthorized = false;
+                user.UserID = null;
                 return;
             }
         }

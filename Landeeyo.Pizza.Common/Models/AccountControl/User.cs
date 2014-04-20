@@ -8,6 +8,6 @@ namespace Landeeyo.Pizza.Common.Models.AccountControl
     {
         public string Login { get; set; }
         public string Password { get; set; }
-        public bool IsAuthorized { get; set; }
+        public int? UserID { get; set; }
     }
 }

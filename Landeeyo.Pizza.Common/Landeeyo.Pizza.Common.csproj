@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\AccountControl\UserCreationFailed.cs" />
+    <Compile Include="Exceptions\AccountControl\UserExistsException.cs" />
     <Compile Include="Models\AccountControl\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
