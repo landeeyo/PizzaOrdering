@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\AccountControl\AccountControlImplementedMockedTest.cs" />
     <Compile Include="Unit\AccountControl\AccountControlMockedTest.cs" />
     <Compile Include="Unit\AccountControl\AccountControlNotImplementedTest.cs" />
   </ItemGroup>

@@ -14,7 +14,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
         }
 
         [Fact]
-        public void AuthorizeUser()
+        public void AuthorizeUserNotImplemented()
         {
             Assert.Throws<System.NotImplementedException>(
                 delegate

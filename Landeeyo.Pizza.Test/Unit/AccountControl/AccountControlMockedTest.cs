@@ -19,16 +19,22 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
         }
 
         [Fact]
-        public void AuthorizeUser()
+        public void AuthorizeUserMocked()
         {
+            //arrange
             string login = "TestLogin";
             string password = "TestPassword";
-
             _accountControl.Setup(x => x.AuthorizeUser(login, password)).Returns(true);
 
-            Assert.True(_accountControl.Object.AuthorizeUser(login, password));
-            Assert.False(_accountControl.Object.AuthorizeUser(null, null));
-            Assert.False(_accountControl.Object.AuthorizeUser("test", "test"));
+            //act
+            var result1 = _accountControl.Object.AuthorizeUser(login, password);
+            var result2 = _accountControl.Object.AuthorizeUser(null, null);
+            var result3 = _accountControl.Object.AuthorizeUser("test", "test");
+
+            //assert
+            Assert.True(result1);
+            Assert.False(result2);
+            Assert.False(result3);
         }
     }
 }
