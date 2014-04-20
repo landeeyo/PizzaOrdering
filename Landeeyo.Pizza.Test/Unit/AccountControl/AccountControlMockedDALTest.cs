@@ -31,12 +31,13 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             string improperPassword = "fdjhsdfkf";
 
             _dataAccessMock
-                .Setup(x => x.GetUsers)
-                .Returns(new List<User>() { 
-                    new User {
-                        Login = properLogin, 
+                .Setup(x => x.GetUserByLogin(properLogin))
+                .Returns(
+                    new User()
+                    {
+                        Login = properLogin,
                         Password = properPassword
-                    }}.AsQueryable());
+                    });
             _accountControl.SetDataSource = _dataAccessMock.Object;
 
             //act
@@ -62,21 +63,22 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             };
             User improperUser = new User()
             {
-                Login = "TestLogin",
-                Password = "TestPassword"
+                Login = storedLogin,
+                Password = storedPassword
             };
 
             _dataAccessMock
-                .Setup(x => x.GetUsers)
-                .Returns(new List<User>() { 
-                    new User {
-                        Login = storedLogin, 
+                .Setup(x => x.GetUserByLogin(storedLogin))
+                .Returns(
+                    new User
+                    {
+                        Login = storedLogin,
                         Password = storedPassword
-                    }}.AsQueryable());
+                    });
             _dataAccessMock
                 .Setup(x => x.AddUser(properUser))
                 .Returns(2);
-                
+
             _accountControl.SetDataSource = _dataAccessMock.Object;
 
             //act

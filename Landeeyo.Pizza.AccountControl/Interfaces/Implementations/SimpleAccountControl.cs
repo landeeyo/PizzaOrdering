@@ -13,13 +13,10 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
 
         public bool AuthorizeUser(string login, string password)
         {
-            var queryResult = from user in _dataSource.GetUsers
-                              where user.Login == login
-                                     && user.Password == password
-                              select user;
-            if (queryResult.SingleOrDefault() != null)
+            var user = _dataSource.GetUserByLogin(login);
+            if (user != null)
             {
-                return true;
+                return user.Password == password;
             }
             else
             {
@@ -29,10 +26,8 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
 
         public void CreateAccount(User user)
         {
-            var queryResult = from u in _dataSource.GetUsers
-                              where u.Login == user.Login
-                              select u;
-            if (queryResult.SingleOrDefault() != null)
+            //Check if user already exists
+            if (_dataSource.GetUserByLogin(user.Login) != null)
             {
                 throw new UserExistsException();
             }

@@ -10,9 +10,11 @@ namespace Landeeyo.Pizza.DataAccessLayer
     public interface IDataAccess
     {
         /// <summary>
-        /// Gets users
+        /// Gets user by login
         /// </summary>
-        IQueryable<User> GetUsers { get; }
+        /// <param name="login">Login</param>
+        /// <returns>User object</returns>
+        User GetUserByLogin(string login);
 
         /// <summary>
         /// Adds user
