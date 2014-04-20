@@ -10,10 +10,10 @@ namespace Landeeyo.Pizza.AccountControl.Interfaces
         /// <summary>
         /// Authorizes user
         /// </summary>
-        /// <param name="userName"></param>
+        /// <param name="login"></param>
         /// <param name="password"></param>
         /// <returns>True if authorized, false if not</returns>
-        bool AuthorizeUser(string userName, string password);
+        bool AuthorizeUser(string login, string password);
 
         /// <summary>
         /// Creates account

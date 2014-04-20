@@ -158,3 +158,13 @@ Landeeyo.Pizza.Common/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f
 Landeeyo.Pizza.Common/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
 Landeeyo.Pizza.Common/bin/Debug/Landeeyo.Pizza.Common.dll
 Landeeyo.Pizza.Common/bin/Debug/Landeeyo.Pizza.Common.pdb
+Landeeyo.Pizza.Test/bin/Debug/Landeeyo.Pizza.AuthorizationLayer.dll
+Landeeyo.Pizza.Test/bin/Debug/Landeeyo.Pizza.AuthorizationLayer.pdb
+Landeeyo.Pizza.Test/bin/Debug/Landeeyo.Pizza.Common.dll
+Landeeyo.Pizza.Test/bin/Debug/Landeeyo.Pizza.Common.pdb
+Landeeyo.Pizza.Test/bin/Debug/Moq.dll
+Landeeyo.Pizza.Test/bin/Debug/Moq.xml
+Landeeyo.Pizza.Test/bin/Debug/xunit.dll
+Landeeyo.Pizza.Test/bin/Debug/xunit.xml
+TestResults/Landeeyo.Pizza.TE.Tests.mdf
+TestResults/Landeeyo.Pizza.TE.Tests_log.ldf
