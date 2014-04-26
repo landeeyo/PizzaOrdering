@@ -50,6 +50,7 @@
     <Compile Include="Unit\AccountControl\AccountControlMockedTest.cs" />
     <Compile Include="Unit\AccountControl\AccountControlNotImplementedTest.cs" />
     <Compile Include="Unit\AccountControl\AccountControlMockedDALTest.cs" />
+    <Compile Include="Unit\AccountControl\AccountControlSQLTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Unit\DataAccess\" />
