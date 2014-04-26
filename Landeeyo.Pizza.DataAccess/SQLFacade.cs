@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Landeeyo.Pizza.Common.Models.AccountControl;
 using Landeeyo.Pizza.DataAccessLayer.EntityConfig;
+using Landeeyo.Pizza.Common.Exceptions.AccountControl;
 
 namespace Landeeyo.Pizza.DataAccessLayer
 {
@@ -12,12 +13,24 @@ namespace Landeeyo.Pizza.DataAccessLayer
     {
         public User GetUserByLogin(string login)
         {
-            throw new NotImplementedException();
+            using (var context = new DatabaseContext())
+            {
+               return context.Users.Where(x => x.Login == login).SingleOrDefault();
+            }
         }
 
         public int? AddUser(User user)
         {
-            throw new NotImplementedException();
+            using (var context = new DatabaseContext())
+            {
+                if (context.Users.Where(x => x.Login == user.Login).SingleOrDefault() != null)
+                {
+                    throw new UserExistsException();
+                }
+                context.Users.Add(user);
+                context.SaveChanges();
+                return user.UserID;
+            }
         }
     }
 }

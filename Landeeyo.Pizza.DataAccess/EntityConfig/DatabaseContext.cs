@@ -16,6 +16,16 @@ namespace Landeeyo.Pizza.DataAccessLayer.EntityConfig
         {
         }
 
+        //public DatabaseContext(string connectionString)
+        //    : base(connectionString)
+        //{
+        //}
+
+        //public DatabaseContext()
+        //{
+        //    this.Database.Connection.ConnectionString = "Data Source=WIN7NETDEV-PC;Initial Catalog=Pizza;Persist Security Info=True;User ID=sa;Password=sa";
+        //}
+
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
