@@ -17,21 +17,16 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             }
         }
 
-        public void CreateAccount(User user)
+        public int? CreateAccount(User user)
         {
             if (user != null && user.Login != null && user.Password != null)
             {
                 if (user.Login == "TestLogin" && user.Password.Length > 0)
                 {
-                    user.UserID = 1;
-                    return;
+                    return 1;
                 }
             }
-            else
-            {
-                user.UserID = null;
-                return;
-            }
+                return null;
         }
 
         public DataAccessLayer.IDataAccess SetDataSource

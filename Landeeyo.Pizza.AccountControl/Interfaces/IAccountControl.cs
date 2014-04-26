@@ -19,8 +19,8 @@ namespace Landeeyo.Pizza.AccountControl.Interfaces
         /// <summary>
         /// Creates account
         /// </summary>
-        /// <returns>True if created successfully, false if not</returns>
-        void CreateAccount(User user);
+        /// <returns></returns>
+        int? CreateAccount(User user);
 
         /// <summary>
         /// Sets data source

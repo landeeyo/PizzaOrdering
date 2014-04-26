@@ -24,7 +24,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             }
         }
 
-        public void CreateAccount(User user)
+        public int? CreateAccount(User user)
         {
             //Check if user already exists
             if (_dataSource.GetUserByLogin(user.Login) != null)
@@ -34,7 +34,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             else
             {
                 //Add user
-                user.UserID = _dataSource.AddUser(user);
+                return _dataSource.AddUser(user);
             }
         }
 

@@ -41,10 +41,9 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             User improperUser = new Mock<User>().SetupAllProperties().Object; 
 
             //act
-            _accountControl.CreateAccount(improperUser);
-            var result1 = improperUser.UserID.HasValue;
-            _accountControl.CreateAccount(properUser);
-            var result2 = properUser.UserID.HasValue;
+            ;
+            var result1 = _accountControl.CreateAccount(improperUser).HasValue;
+            var result2 =_accountControl.CreateAccount(properUser).HasValue;
 
             //assert
             Assert.False(result1);

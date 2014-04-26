@@ -82,8 +82,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             _accountControl.SetDataSource = _dataAccessMock.Object;
 
             //act
-            _accountControl.CreateAccount(properUser);
-            var result1 = properUser.UserID.HasValue;
+            var result1 = _accountControl.CreateAccount(properUser).HasValue;
 
             //assert
             Assert.True(result1);
