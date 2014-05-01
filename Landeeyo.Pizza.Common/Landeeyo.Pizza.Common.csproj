@@ -43,6 +43,8 @@
     <Compile Include="Exceptions\AccountControl\UserCreationFailed.cs" />
     <Compile Include="Exceptions\AccountControl\UserExistsException.cs" />
     <Compile Include="Models\AccountControl\User.cs" />
+    <Compile Include="Models\PizzaManagement\Pizza.cs" />
+    <Compile Include="Models\PizzaManagement\Restaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

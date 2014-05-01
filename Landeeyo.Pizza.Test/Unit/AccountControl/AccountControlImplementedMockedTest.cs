@@ -42,8 +42,8 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
 
             //act
             ;
-            var result1 = _accountControl.CreateAccount(improperUser).HasValue;
-            var result2 =_accountControl.CreateAccount(properUser).HasValue;
+            var result1 = _accountControl.AddUser(improperUser).HasValue;
+            var result2 =_accountControl.AddUser(properUser).HasValue;
 
             //assert
             Assert.False(result1);

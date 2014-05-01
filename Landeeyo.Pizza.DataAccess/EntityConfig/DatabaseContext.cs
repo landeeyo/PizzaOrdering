@@ -1,4 +1,5 @@
 ﻿using Landeeyo.Pizza.Common.Models.AccountControl;
+using Landeeyo.Pizza.Common.Models.PizzaManagement;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,17 +17,9 @@ namespace Landeeyo.Pizza.DataAccessLayer.EntityConfig
         {
         }
 
-        //public DatabaseContext(string connectionString)
-        //    : base(connectionString)
-        //{
-        //}
-
-        //public DatabaseContext()
-        //{
-        //    this.Database.Connection.ConnectionString = "Data Source=WIN7NETDEV-PC;Initial Catalog=Pizza;Persist Security Info=True;User ID=sa;Password=sa";
-        //}
-
         public DbSet<User> Users { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza> Pizzas { get; set; }        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

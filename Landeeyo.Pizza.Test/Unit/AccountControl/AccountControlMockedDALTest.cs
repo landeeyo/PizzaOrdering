@@ -82,14 +82,14 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             _accountControl.SetDataSource = _dataAccessMock.Object;
 
             //act
-            var result1 = _accountControl.CreateAccount(properUser).HasValue;
+            var result1 = _accountControl.AddUser(properUser).HasValue;
 
             //assert
             Assert.True(result1);
             Assert.Throws<UserExistsException>(
                 delegate
                 {
-                    _accountControl.CreateAccount(improperUser);
+                    _accountControl.AddUser(improperUser);
                 });
         }
     }

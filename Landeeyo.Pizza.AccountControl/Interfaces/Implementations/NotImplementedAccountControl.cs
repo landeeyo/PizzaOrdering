@@ -10,7 +10,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             throw new NotImplementedException();
         }
 
-        public int? CreateAccount(Common.Models.AccountControl.User user)
+        public int? AddUser(Common.Models.AccountControl.User user)
         {
             throw new NotImplementedException();
         }

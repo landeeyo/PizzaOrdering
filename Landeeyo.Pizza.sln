@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landeeyo.Pizza.Test", "Land
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landeeyo.Pizza.Common", "Landeeyo.Pizza.Common\Landeeyo.Pizza.Common.csproj", "{EBAA70E4-6FC7-40FF-BA50-942AC84FC9B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landeeyo.Pizza.PizzaManagement", "Landeeyo.Pizza.PizzaManagement\Landeeyo.Pizza.PizzaManagement.csproj", "{07C10BF4-BA9F-49AE-A528-F95290645561}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{EBAA70E4-6FC7-40FF-BA50-942AC84FC9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBAA70E4-6FC7-40FF-BA50-942AC84FC9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBAA70E4-6FC7-40FF-BA50-942AC84FC9B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07C10BF4-BA9F-49AE-A528-F95290645561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07C10BF4-BA9F-49AE-A528-F95290645561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07C10BF4-BA9F-49AE-A528-F95290645561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07C10BF4-BA9F-49AE-A528-F95290645561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

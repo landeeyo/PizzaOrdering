@@ -37,19 +37,19 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             User properUser = new User()
             {
                 Login = properLogin,
-                Password = properPassword
+                Password = properPassword,
             };
 
             _accountControl.SetDataSource = _dataAccess;
 
             //act
-            var result1 = _accountControl.CreateAccount(properUser).HasValue;
+            var result1 = _accountControl.AddUser(properUser).HasValue;
             var result2 = _accountControl.AuthorizeUser(properLogin, properPassword);
             var result3 = _accountControl.AuthorizeUser(improperLogin, improperPassword);
             Assert.Throws<UserExistsException>(
                delegate
                {
-                   _accountControl.CreateAccount(properUser);
+                   _accountControl.AddUser(properUser);
                });
 
             //Cleanup

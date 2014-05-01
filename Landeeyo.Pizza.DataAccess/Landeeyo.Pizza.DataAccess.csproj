@@ -52,6 +52,10 @@
     <Compile Include="Migrations\201404262012164_InitialCreate.Designer.cs">
       <DependentUpon>201404262012164_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405011014097_PizzaManagementModels.cs" />
+    <Compile Include="Migrations\201405011014097_PizzaManagementModels.Designer.cs">
+      <DependentUpon>201405011014097_PizzaManagementModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLFacade.cs" />
@@ -69,6 +73,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201404262012164_InitialCreate.resx">
       <DependentUpon>201404262012164_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405011014097_PizzaManagementModels.resx">
+      <DependentUpon>201405011014097_PizzaManagementModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

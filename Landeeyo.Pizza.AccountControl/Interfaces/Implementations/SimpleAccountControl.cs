@@ -2,8 +2,6 @@
 using Landeeyo.Pizza.Common.Exceptions.AccountControl;
 using Landeeyo.Pizza.Common.Models.AccountControl;
 using Landeeyo.Pizza.DataAccessLayer;
-using System;
-using System.Linq;
 
 namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
 {
@@ -24,7 +22,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             }
         }
 
-        public int? CreateAccount(User user)
+        public int? AddUser(User user)
         {
             //Check if user already exists
             if (_dataSource.GetUserByLogin(user.Login) != null)

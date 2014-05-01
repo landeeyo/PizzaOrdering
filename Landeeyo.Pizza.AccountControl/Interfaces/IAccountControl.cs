@@ -20,7 +20,7 @@ namespace Landeeyo.Pizza.AccountControl.Interfaces
         /// Creates account
         /// </summary>
         /// <returns></returns>
-        int? CreateAccount(User user);
+        int? AddUser(User user);
 
         /// <summary>
         /// Sets data source

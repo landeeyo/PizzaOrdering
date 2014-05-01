@@ -17,7 +17,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             }
         }
 
-        public int? CreateAccount(User user)
+        public int? AddUser(User user)
         {
             if (user != null && user.Login != null && user.Password != null)
             {

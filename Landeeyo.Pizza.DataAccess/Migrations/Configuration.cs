@@ -10,6 +10,7 @@ namespace Landeeyo.Pizza.DataAccessLayer.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Landeeyo.Pizza.DataAccessLayer.EntityConfig.DatabaseContext context)
