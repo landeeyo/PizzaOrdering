@@ -72,6 +72,14 @@
     <Compile Include="Migrations\201405011216298_KeysOnUserModelModified.Designer.cs">
       <DependentUpon>201405011216298_KeysOnUserModelModified.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405011410220_LogModel.cs" />
+    <Compile Include="Migrations\201405011410220_LogModel.Designer.cs">
+      <DependentUpon>201405011410220_LogModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405011411187_Log.cs" />
+    <Compile Include="Migrations\201405011411187_Log.Designer.cs">
+      <DependentUpon>201405011411187_Log.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLFacade.cs" />
@@ -104,6 +112,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405011216298_KeysOnUserModelModified.resx">
       <DependentUpon>201405011216298_KeysOnUserModelModified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405011410220_LogModel.resx">
+      <DependentUpon>201405011410220_LogModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405011411187_Log.resx">
+      <DependentUpon>201405011411187_Log.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

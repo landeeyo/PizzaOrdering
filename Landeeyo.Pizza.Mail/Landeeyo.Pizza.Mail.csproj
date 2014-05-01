@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EBAA70E4-6FC7-40FF-BA50-942AC84FC9B3}</ProjectGuid>
+    <ProjectGuid>{6035FA0C-2D52-41CF-982A-6D63A01AD183}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Landeeyo.Pizza.Common</RootNamespace>
-    <AssemblyName>Landeeyo.Pizza.Common</AssemblyName>
+    <RootNamespace>Landeeyo.Pizza.Mail</RootNamespace>
+    <AssemblyName>Landeeyo.Pizza.Mail</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,16 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\AccountControl\UserException.cs" />
-    <Compile Include="Exceptions\PizzaManagement\PizzaException.cs" />
-    <Compile Include="Exceptions\PizzaManagement\RestaurantException.cs" />
-    <Compile Include="Exceptions\PizzaRootException.cs" />
-    <Compile Include="Models\AccountControl\User.cs" />
-    <Compile Include="Models\Log\Log.cs" />
-    <Compile Include="Models\OrderManagement\OrderHistory.cs" />
-    <Compile Include="Models\PizzaManagement\Pizza.cs" />
-    <Compile Include="Models\PizzaManagement\Restaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Landeeyo.Pizza.Common\Landeeyo.Pizza.Common.csproj">
+      <Project>{ebaa70e4-6fc7-40ff-ba50-942ac84fc9b3}</Project>
+      <Name>Landeeyo.Pizza.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
