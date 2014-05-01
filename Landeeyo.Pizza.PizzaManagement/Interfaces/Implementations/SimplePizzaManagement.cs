@@ -19,32 +19,74 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
 
         public void AddPizza(Common.Models.PizzaManagement.Pizza pizza)
         {
-            _dataSource.AddPizza(pizza);
+            try
+            {
+                _dataSource.AddPizza(pizza);
+            }
+            catch (Exception ex)
+            {
+                throw new PizzaException(ex);
+            }
         }
 
         public void RemovePizzaByPizzaID(int pizzaID)
         {
-            _dataSource.RemovePizzaByPizzaID(pizzaID);
+            try
+            {
+                _dataSource.RemovePizzaByPizzaID(pizzaID);
+            }
+            catch (Exception ex)
+            {
+                throw new PizzaException(ex);
+            }
         }
 
         public List<Common.Models.PizzaManagement.Pizza> GetPizzaListByRestaurantID(int restaurantID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _dataSource.GetPizzaListByRestaurantID(restaurantID);
+            }
+            catch (Exception ex)
+            {
+                throw new PizzaException(ex);
+            }
         }
 
         public void AddRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
         {
-            _dataSource.AddRestaurant(restaurant);
+            try
+            {
+                _dataSource.AddRestaurant(restaurant);
+            }
+            catch (Exception ex)
+            {
+                throw new RestaurantException(ex);
+            }
         }
 
         public void RemoveRestaurantByRestaurantID(int restaurantID)
         {
-            _dataSource.RemoveRestaurantByRestaurantID(restaurantID);
+            try
+            {
+                _dataSource.RemoveRestaurantByRestaurantID(restaurantID);
+            }
+            catch (Exception ex)
+            {
+                throw new RestaurantException(ex);
+            }
         }
 
         public Common.Models.PizzaManagement.Restaurant GetRestaurantByName(string restaurantName)
         {
-            return _dataSource.GetRestaurantByName(restaurantName);
+            try
+            {
+                return _dataSource.GetRestaurantByName(restaurantName);
+            }
+            catch (Exception ex)
+            {
+                throw new RestaurantException(ex);
+            }
         }
     }
 }

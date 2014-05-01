@@ -13,7 +13,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
         #region Account control layer
 
         User GetUserByLogin(string login);
-        int AddUser(User user);
+        void AddUser(User user);
 
         #endregion
 

@@ -22,13 +22,12 @@ namespace Landeeyo.Pizza.DataAccessLayer
             }
         }
 
-        public int AddUser(User user)
+        public void AddUser(User user)
         {
             using (var context = new DatabaseContext())
             {
                 context.Users.Add(user);
                 context.SaveChanges();
-                return user.UserID;
             }
         }
 
@@ -40,6 +39,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
         {
             using (var context = new DatabaseContext())
             {
+                pizza.Restaurant = context.Restaurants.Where(x => x.RestaurantID == pizza.RestaurantID).SingleOrDefault();
                 context.Pizzas.Add(pizza);
                 context.SaveChanges();
             }
@@ -56,22 +56,36 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
         public List<Common.Models.PizzaManagement.Pizza> GetPizzaListByRestaurantID(int restaurantID)
         {
-            throw new NotImplementedException();
+            using (var context = new DatabaseContext())
+            {
+                return context.Pizzas.Where(x => x.RestaurantID == restaurantID).ToList();
+            }
         }
 
         public void AddRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
         {
-            throw new NotImplementedException();
+            using (var context = new DatabaseContext())
+            {
+                context.Restaurants.Add(restaurant);
+                context.SaveChanges();
+            }
         }
 
         public void RemoveRestaurantByRestaurantID(int restaurantID)
         {
-            throw new NotImplementedException();
+            using (var context = new DatabaseContext())
+            {
+                context.Restaurants.Remove(context.Restaurants.Where(x => x.RestaurantID == restaurantID).SingleOrDefault());
+                context.SaveChanges();
+            }
         }
 
         public Common.Models.PizzaManagement.Restaurant GetRestaurantByName(string restaurantName)
         {
-            throw new NotImplementedException();
+            using (var context = new DatabaseContext())
+            {
+                return context.Restaurants.Where(x => x.Name == restaurantName).SingleOrDefault();
+            }
         }
 
         #endregion

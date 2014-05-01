@@ -2,6 +2,7 @@
 using Landeeyo.Pizza.DataAccessLayer;
 using Landeeyo.Pizza.PizzaManagement.Interfaces;
 using Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations;
+using System;
 using Xunit;
 
 namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
@@ -33,7 +34,7 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
             _pizzaManagement.RemoveRestaurantByRestaurantID(restaurant.RestaurantID);
 
             //assert
-            Assert.Equal(restaurant, restaurant2);
+            Assert.True(TestHelper.ArePropertiesEqual(restaurant, restaurant2));
         }
 
         [Fact]
@@ -56,12 +57,13 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
                {
                    Name = "Capriciosa",
                    Price = 21,
-                   RestaurantID = restaurant.RestaurantID
+                   RestaurantID = restaurant.RestaurantID,
                };
 
             //act
             _pizzaManagement.AddPizza(pizza);
             _pizzaManagement.RemovePizzaByPizzaID(pizza.PizzaID);
+            _pizzaManagement.RemoveRestaurantByRestaurantID(restaurant.RestaurantID);
 
             //assert
             Assert.True(pizza.PizzaID > 0);

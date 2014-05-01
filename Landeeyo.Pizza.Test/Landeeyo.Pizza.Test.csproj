@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelper.cs" />
     <Compile Include="Unit\AccountControl\AccountControlSQLTest.cs" />
     <Compile Include="Unit\PizzaManagement\PizzaManagementSQLTest.cs" />
   </ItemGroup>
