@@ -2,6 +2,7 @@
 using Landeeyo.Pizza.Common.Exceptions.AccountControl;
 using Landeeyo.Pizza.Common.Models.AccountControl;
 using Landeeyo.Pizza.DataAccessLayer;
+using System;
 
 namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
 {
@@ -11,29 +12,35 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
 
         public bool AuthorizeUser(string login, string password)
         {
-            var user = _dataSource.GetUserByLogin(login);
-            if (user != null)
+            try
             {
-                return user.Password == password;
+                var user = _dataSource.GetUserByLogin(login);
+                if (user != null)
+                {
+                    return user.Password == password;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return false;
+                throw new UserException(ex);
             }
         }
 
-        public int AddUser(User user)
+        public void AddUser(User user)
         {
-            //Check if user already exists
-            if (_dataSource.GetUserByLogin(user.Login) != null)
-            {
-                throw new UserExistsException();
-            }
-            else
+            try
             {
                 //Add user
                 user.IsActive = true;
-                return _dataSource.AddUser(user);
+                _dataSource.AddUser(user);
+            }
+            catch (Exception ex)
+            {
+                throw new UserException(ex);
             }
         }
 

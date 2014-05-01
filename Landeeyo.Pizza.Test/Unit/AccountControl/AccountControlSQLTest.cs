@@ -42,13 +42,12 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
                 Surname = "Locke"
             };
 
-
-
             //act
-            var result1 = _accountControl.AddUser(properUser);
+            _accountControl.AddUser(properUser);
+            var result1 = properUser.UserID;
             var result2 = _accountControl.AuthorizeUser(properLogin, properPassword);
             var result3 = _accountControl.AuthorizeUser(improperLogin, improperPassword);
-            Assert.Throws<UserExistsException>(
+            Assert.Throws<UserException>(
                delegate
                {
                    _accountControl.AddUser(properUser);

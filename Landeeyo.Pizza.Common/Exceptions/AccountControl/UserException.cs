@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Landeeyo.Pizza.Common.Exceptions.AccountControl
 {
-    public class UserExistsException : ApplicationException
+    public class UserException : PizzaRootException
     {
+        public UserException(Exception ex) : base(ex) { }
     }
 }

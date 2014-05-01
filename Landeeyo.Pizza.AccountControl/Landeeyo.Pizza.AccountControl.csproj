@@ -41,8 +41,6 @@
   <ItemGroup>
     <Compile Include="Interfaces\IAccountControl.cs" />
     <Compile Include="Interfaces\Implementations\SimpleAccountControl.cs" />
-    <Compile Include="Interfaces\Implementations\MockedAccountControl.cs" />
-    <Compile Include="Interfaces\Implementations\NotImplementedAccountControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

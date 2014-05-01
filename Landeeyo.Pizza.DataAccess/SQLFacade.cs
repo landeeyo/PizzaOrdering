@@ -12,6 +12,8 @@ namespace Landeeyo.Pizza.DataAccessLayer
 {
     public class SQLFacade : IDataAccess
     {
+        #region Account control layer
+
         public User GetUserByLogin(string login)
         {
             using (var context = new DatabaseContext())
@@ -24,51 +26,31 @@ namespace Landeeyo.Pizza.DataAccessLayer
         {
             using (var context = new DatabaseContext())
             {
-                if (context.Users.Where(x => x.Login == user.Login).SingleOrDefault() != null)
-                {
-                    throw new UserExistsException();
-                }
                 context.Users.Add(user);
                 context.SaveChanges();
                 return user.UserID;
             }
         }
 
+        #endregion
+
+        #region Pizza management layer
+
         public void AddPizza(Common.Models.PizzaManagement.Pizza pizza)
         {
             using (var context = new DatabaseContext())
             {
-                var exists = from p in context.Pizzas
-                             where p.Name == pizza.Name && p.RestaurantID == pizza.RestaurantID
-                             select p;
-                var elem = exists.FirstOrDefault();
-                if (elem != null)
-                {
-                    throw new PizzaCreationException(pizza);
-                }
                 context.Pizzas.Add(pizza);
                 context.SaveChanges();
             }
         }
 
-
         public void RemovePizzaByPizzaID(int pizzaID)
         {
             using (var context = new DatabaseContext())
             {
-                var exists = from p in context.Pizzas
-                             where p.PizzaID == pizzaID
-                             select p;
-                var elem = exists.FirstOrDefault();
-                if (elem != null)
-                {
-                    context.Pizzas.Remove(elem);
-                    context.SaveChanges();
-                }
-                else
-                {
-                    throw new PizzaRemovalException(pizzaID);
-                }
+                context.Pizzas.Remove(context.Pizzas.Where(x => x.PizzaID == pizzaID).SingleOrDefault());
+                context.SaveChanges();
             }
         }
 
@@ -79,12 +61,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
         public void AddRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
         {
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-            }
+            throw new NotImplementedException();
         }
 
         public void RemoveRestaurantByRestaurantID(int restaurantID)
@@ -96,5 +73,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

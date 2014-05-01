@@ -10,23 +10,22 @@ namespace Landeeyo.Pizza.Common.Models.AccountControl
     public class User
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
         public int UserID { get; set; }
 
         [Required]
-        [MaxLength(25), MinLength(3)] 
+        [Key]
         public string Login { get; set; }
-        
+
         [Required]
-        [MaxLength(25), MinLength(7)] 
+        [MaxLength(25), MinLength(7)]
         public string Password { get; set; }
-        
+
         [Required]
-        [MaxLength(25), MinLength(3)] 
+        [MaxLength(25), MinLength(3)]
         public string Firstname { get; set; }
-        
+
         [Required]
-        [MaxLength(25), MinLength(3)] 
+        [MaxLength(25), MinLength(3)]
         public string Surname { get; set; }
 
         [Required]

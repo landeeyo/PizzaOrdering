@@ -9,7 +9,7 @@ namespace Landeeyo.Pizza.AccountControl.Interfaces
     public interface IAccountControl
     {
         bool AuthorizeUser(string login, string password);
-        int AddUser(User user);
+        void AddUser(User user);
 
         IDataAccess SetDataSource { set; }
     }

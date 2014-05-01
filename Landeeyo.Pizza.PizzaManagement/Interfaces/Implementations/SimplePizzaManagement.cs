@@ -11,7 +11,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
     public class SimplePizzaManagement : IPizzaManagement
     {
         IDataAccess _dataSource;
-        
+
         public DataAccessLayer.IDataAccess SetDataSource
         {
             set { _dataSource = value; }
@@ -19,14 +19,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
 
         public void AddPizza(Common.Models.PizzaManagement.Pizza pizza)
         {
-            if (pizza != null)
-            {
-                _dataSource.AddPizza(pizza);
-            }
-            else
-            {
-                throw new PizzaCreationException(pizza);
-            }
+            _dataSource.AddPizza(pizza);
         }
 
         public void RemovePizzaByPizzaID(int pizzaID)
@@ -41,14 +34,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
 
         public void AddRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
         {
-            if (restaurant != null)
-            {
-                _dataSource.AddRestaurant(restaurant);
-            }
-            else
-            {
-                throw new RestaurantCreationException(restaurant);
-            }
+            _dataSource.AddRestaurant(restaurant);
         }
 
         public void RemoveRestaurantByRestaurantID(int restaurantID)
