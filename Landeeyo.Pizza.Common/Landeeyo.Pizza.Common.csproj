@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\AccountControl\UserCreationFailed.cs" />
-    <Compile Include="Exceptions\AccountControl\UserExists.cs" />
+    <Compile Include="Exceptions\AccountControl\UserCreationException.cs" />
+    <Compile Include="Exceptions\AccountControl\UserExistsException.cs" />
+    <Compile Include="Exceptions\PizzaManagement\PizzaCreationException.cs" />
+    <Compile Include="Exceptions\PizzaManagement\PizzaRemovalException.cs" />
+    <Compile Include="Exceptions\PizzaManagement\RestaurantCreationException.cs" />
     <Compile Include="Models\AccountControl\User.cs" />
     <Compile Include="Models\OrderManagement\OrderHistory.cs" />
     <Compile Include="Models\PizzaManagement\Pizza.cs" />

@@ -1,4 +1,5 @@
 ﻿using Landeeyo.Pizza.Common.Models.AccountControl;
+using Landeeyo.Pizza.Common.Models.PizzaManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,23 @@ namespace Landeeyo.Pizza.DataAccessLayer
 {
     public interface IDataAccess
     {
+        #region Account control layer
+
         User GetUserByLogin(string login);
         int AddUser(User user);
+
+        #endregion
+
+        #region Pizza management layer
+
+        void AddPizza(Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza pizza);
+        void RemovePizzaByPizzaID(int pizzaID);
+        List<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza> GetPizzaListByRestaurantID(int restaurantID);
+
+        void AddRestaurant(Restaurant restaurant);
+        void RemoveRestaurantByRestaurantID(int restaurantID);
+        Restaurant GetRestaurantByName(string restaurantName);
+
+        #endregion        
     }
 }

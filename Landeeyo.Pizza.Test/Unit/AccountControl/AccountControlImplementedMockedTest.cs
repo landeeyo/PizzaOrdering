@@ -43,7 +43,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
 
             //act
 
-            Assert.Throws<UserCreationFailed>(
+            Assert.Throws<UserCreationException>(
                delegate
                {
                    _accountControl.AddUser(improperUser);

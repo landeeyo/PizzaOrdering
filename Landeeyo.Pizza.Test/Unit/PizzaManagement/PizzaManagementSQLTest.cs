@@ -9,7 +9,6 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
     public class PizzaManagementSQLTest
     {
         private IPizzaManagement _pizzaManagement;
-        private IDataAccess _dataAccess;
 
         public PizzaManagementSQLTest()
         {
@@ -29,13 +28,11 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
                };
 
             //act
-            int restaurantID = _pizzaManagement.AddRestaurant(restaurant);
+            _pizzaManagement.AddRestaurant(restaurant);
             Restaurant restaurant2 = _pizzaManagement.GetRestaurantByName(restaurant.Name);
-            bool result = _pizzaManagement.RemoveRestaurantByRestaurantID(restaurantID);
+            _pizzaManagement.RemoveRestaurantByRestaurantID(restaurant.RestaurantID);
 
             //assert
-            Assert.True(restaurantID > 0);
-            Assert.True(result);
             Assert.Equal(restaurant, restaurant2);
         }
 
@@ -52,23 +49,22 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
                    Name = "PizzaHut",
                };
 
-            int restaurantID = _pizzaManagement.AddRestaurant(restaurant);
+            _pizzaManagement.AddRestaurant(restaurant);
 
             Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza pizza =
                new Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza()
                {
                    Name = "Capriciosa",
                    Price = 21,
-                   RestaurantID = restaurantID
+                   RestaurantID = restaurant.RestaurantID
                };
 
             //act
-            int pizzaID = _pizzaManagement.AddPizza(pizza);
-            bool result = _pizzaManagement.RemovePizzaByPizzaID(pizzaID);
+            _pizzaManagement.AddPizza(pizza);
+            _pizzaManagement.RemovePizzaByPizzaID(pizza.PizzaID);
 
             //assert
-            Assert.True(pizzaID > 0);
-            Assert.True(result);
+            Assert.True(pizza.PizzaID > 0);
         }
 
     }

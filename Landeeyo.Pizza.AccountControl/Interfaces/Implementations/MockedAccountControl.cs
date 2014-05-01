@@ -27,7 +27,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
                     return 1;
                 }
             }
-            throw new UserCreationFailed();
+            throw new UserCreationException();
         }
 
         public DataAccessLayer.IDataAccess SetDataSource

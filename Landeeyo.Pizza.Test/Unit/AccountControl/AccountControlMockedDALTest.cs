@@ -86,7 +86,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
 
             //assert
             Assert.True(result1 > 0);
-            Assert.Throws<UserExists>(
+            Assert.Throws<UserExistsException>(
                 delegate
                 {
                     _accountControl.AddUser(improperUser);

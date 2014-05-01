@@ -16,18 +16,17 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
     public class AccountControlSQLTest
     {
         private IAccountControl _accountControl;
-        private IDataAccess _dataAccess;
 
         public AccountControlSQLTest()
         {
+            _accountControl = new SimpleAccountControl();
+            _accountControl.SetDataSource = new SQLFacade();
         }
 
         [Fact]
         public void CreateAndAuthorizeUser()
         {
             //arrange
-            _accountControl = new SimpleAccountControl();
-            _accountControl.SetDataSource = new SQLFacade();
 
             string properLogin = "TestLogin";
             string properPassword = "TestPassword";
@@ -49,7 +48,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             var result1 = _accountControl.AddUser(properUser);
             var result2 = _accountControl.AuthorizeUser(properLogin, properPassword);
             var result3 = _accountControl.AuthorizeUser(improperLogin, improperPassword);
-            Assert.Throws<UserExists>(
+            Assert.Throws<UserExistsException>(
                delegate
                {
                    _accountControl.AddUser(properUser);

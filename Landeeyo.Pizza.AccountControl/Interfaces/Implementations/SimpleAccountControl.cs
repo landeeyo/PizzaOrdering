@@ -27,7 +27,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             //Check if user already exists
             if (_dataSource.GetUserByLogin(user.Login) != null)
             {
-                throw new UserExists();
+                throw new UserExistsException();
             }
             else
             {

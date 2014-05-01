@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Landeeyo.Pizza.Common.Exceptions.PizzaManagement;
+using Landeeyo.Pizza.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +10,28 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
 {
     public class SimplePizzaManagement : IPizzaManagement
     {
-        public int AddPizza(Common.Models.PizzaManagement.Pizza pizza)
+        IDataAccess _dataSource;
+        
+        public DataAccessLayer.IDataAccess SetDataSource
         {
-            throw new NotImplementedException();
+            set { _dataSource = value; }
+        }
+
+        public void AddPizza(Common.Models.PizzaManagement.Pizza pizza)
+        {
+            if (pizza != null)
+            {
+                _dataSource.AddPizza(pizza);
+            }
+            else
+            {
+                throw new PizzaCreationException(pizza);
+            }
+        }
+
+        public void RemovePizzaByPizzaID(int pizzaID)
+        {
+            _dataSource.RemovePizzaByPizzaID(pizzaID);
         }
 
         public List<Common.Models.PizzaManagement.Pizza> GetPizzaListByRestaurantID(int restaurantID)
@@ -18,29 +39,26 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             throw new NotImplementedException();
         }
 
-        public bool RemovePizzaByPizzaID(int pizzaID)
+        public void AddRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
         {
-            throw new NotImplementedException();
+            if (restaurant != null)
+            {
+                _dataSource.AddRestaurant(restaurant);
+            }
+            else
+            {
+                throw new RestaurantCreationException(restaurant);
+            }
         }
 
-        public int AddRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
+        public void RemoveRestaurantByRestaurantID(int restaurantID)
         {
-            throw new NotImplementedException();
+            _dataSource.RemoveRestaurantByRestaurantID(restaurantID);
         }
 
         public Common.Models.PizzaManagement.Restaurant GetRestaurantByName(string restaurantName)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool RemoveRestaurantByRestaurantID(int restaurantID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DataAccessLayer.IDataAccess SetDataSource
-        {
-            set { throw new NotImplementedException(); }
+            return _dataSource.GetRestaurantByName(restaurantName);
         }
     }
 }
