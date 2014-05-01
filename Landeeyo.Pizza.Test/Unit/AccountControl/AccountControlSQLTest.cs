@@ -20,39 +20,42 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
 
         public AccountControlSQLTest()
         {
-            _accountControl = new SimpleAccountControl();
-            _dataAccess = new SQLFacade();
         }
 
         [Fact]
         public void CreateAndAuthorizeUser()
         {
+            //arrange
+            _accountControl = new SimpleAccountControl();
+            _accountControl.SetDataSource = new SQLFacade();
+
             string properLogin = "TestLogin";
             string properPassword = "TestPassword";
             string improperLogin = "dfjkhsdfk";
             string improperPassword = "fdjhsdfkf";
 
-
-            //arrange
             User properUser = new User()
             {
                 Login = properLogin,
                 Password = properPassword,
+                Email = "test@test.com",
+                Firstname = "John",
+                Surname = "Locke"
             };
 
-            _accountControl.SetDataSource = _dataAccess;
+
 
             //act
-            var result1 = _accountControl.AddUser(properUser).HasValue;
+            var result1 = _accountControl.AddUser(properUser);
             var result2 = _accountControl.AuthorizeUser(properLogin, properPassword);
             var result3 = _accountControl.AuthorizeUser(improperLogin, improperPassword);
-            Assert.Throws<UserExistsException>(
+            Assert.Throws<UserExists>(
                delegate
                {
                    _accountControl.AddUser(properUser);
                });
 
-            //Cleanup
+            //cleanup
             using (var context = new DatabaseContext())
             {
                 var user = context.Users.Where(x => x.Login == properUser.Login).SingleOrDefault();
@@ -61,7 +64,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             }
 
             //assert
-            Assert.True(result1);
+            Assert.True(result1 > 0);
             Assert.True(result2);
             Assert.False(result3);
         }

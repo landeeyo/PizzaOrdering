@@ -1,5 +1,6 @@
 ﻿using Landeeyo.Pizza.AccountControl.Interfaces;
 using Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations;
+using Landeeyo.Pizza.Common.Exceptions.AccountControl;
 using Landeeyo.Pizza.Common.Models.AccountControl;
 using Moq;
 using Xunit;
@@ -38,16 +39,18 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
         {
             //arrange
             User properUser = new User() { Login = "TestLogin", Password = "TestPassword" };
-            User improperUser = new Mock<User>().SetupAllProperties().Object; 
+            User improperUser = new Mock<User>().SetupAllProperties().Object;
 
             //act
-            ;
-            var result1 = _accountControl.AddUser(improperUser).HasValue;
-            var result2 =_accountControl.AddUser(properUser).HasValue;
+
+            Assert.Throws<UserCreationFailed>(
+               delegate
+               {
+                   _accountControl.AddUser(improperUser);
+               });
 
             //assert
-            Assert.False(result1);
-            Assert.True(result2);
+            Assert.True(_accountControl.AddUser(properUser) > 0);
         }
     }
 }

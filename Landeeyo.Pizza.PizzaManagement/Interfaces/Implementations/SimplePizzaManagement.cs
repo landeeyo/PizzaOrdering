@@ -8,7 +8,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
 {
     public class SimplePizzaManagement : IPizzaManagement
     {
-        public int? AddPizza(Common.Models.PizzaManagement.Pizza pizza)
+        public int AddPizza(Common.Models.PizzaManagement.Pizza pizza)
         {
             throw new NotImplementedException();
         }
@@ -18,7 +18,12 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             throw new NotImplementedException();
         }
 
-        public int? AddRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
+        public bool RemovePizzaByPizzaID(int pizzaID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int AddRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
         {
             throw new NotImplementedException();
         }
@@ -26,6 +31,16 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         public Common.Models.PizzaManagement.Restaurant GetRestaurantByName(string restaurantName)
         {
             throw new NotImplementedException();
+        }
+
+        public bool RemoveRestaurantByRestaurantID(int restaurantID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataAccessLayer.IDataAccess SetDataSource
+        {
+            set { throw new NotImplementedException(); }
         }
     }
 }

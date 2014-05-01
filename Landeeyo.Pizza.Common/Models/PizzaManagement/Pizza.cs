@@ -28,5 +28,8 @@ namespace Landeeyo.Pizza.Common.Models.PizzaManagement
         [Required]
         [ForeignKey("RestaurantID")]        
         public Restaurant Restaurant { get; set; }
+
+        [Required]
+        public bool IsActive { get; set; }
     }
 }

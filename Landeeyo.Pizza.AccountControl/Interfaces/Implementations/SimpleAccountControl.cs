@@ -22,16 +22,17 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             }
         }
 
-        public int? AddUser(User user)
+        public int AddUser(User user)
         {
             //Check if user already exists
             if (_dataSource.GetUserByLogin(user.Login) != null)
             {
-                throw new UserExistsException();
+                throw new UserExists();
             }
             else
             {
                 //Add user
+                user.IsActive = true;
                 return _dataSource.AddUser(user);
             }
         }

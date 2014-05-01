@@ -9,18 +9,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
 {
     public interface IDataAccess
     {
-        /// <summary>
-        /// Gets user by login
-        /// </summary>
-        /// <param name="login">Login</param>
-        /// <returns>User object</returns>
         User GetUserByLogin(string login);
-
-        /// <summary>
-        /// Adds user
-        /// </summary>
-        /// <param name="user">User object</param>
-        /// <returns>If user exists null, if user added id, else exception</returns>
-        int? AddUser(User user);
+        int AddUser(User user);
     }
 }

@@ -19,13 +19,13 @@ namespace Landeeyo.Pizza.DataAccessLayer
             }
         }
 
-        public int? AddUser(User user)
+        public int AddUser(User user)
         {
             using (var context = new DatabaseContext())
             {
                 if (context.Users.Where(x => x.Login == user.Login).SingleOrDefault() != null)
                 {
-                    throw new UserExistsException();
+                    throw new UserExists();
                 }
                 context.Users.Add(user);
                 context.SaveChanges();

@@ -56,6 +56,14 @@
     <Compile Include="Migrations\201405011014097_PizzaManagementModels.Designer.cs">
       <DependentUpon>201405011014097_PizzaManagementModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405011020537_UserEmailValidation.cs" />
+    <Compile Include="Migrations\201405011020537_UserEmailValidation.Designer.cs">
+      <DependentUpon>201405011020537_UserEmailValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405011025413_DeletionStateFlags.cs" />
+    <Compile Include="Migrations\201405011025413_DeletionStateFlags.Designer.cs">
+      <DependentUpon>201405011025413_DeletionStateFlags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLFacade.cs" />
@@ -76,6 +84,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405011014097_PizzaManagementModels.resx">
       <DependentUpon>201405011014097_PizzaManagementModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405011020537_UserEmailValidation.resx">
+      <DependentUpon>201405011020537_UserEmailValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405011025413_DeletionStateFlags.resx">
+      <DependentUpon>201405011025413_DeletionStateFlags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

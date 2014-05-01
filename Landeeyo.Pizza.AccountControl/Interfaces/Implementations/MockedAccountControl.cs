@@ -1,4 +1,5 @@
 ﻿using Landeeyo.Pizza.AccountControl.Interfaces;
+using Landeeyo.Pizza.Common.Exceptions.AccountControl;
 using Landeeyo.Pizza.Common.Models.AccountControl;
 
 namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
@@ -17,7 +18,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             }
         }
 
-        public int? AddUser(User user)
+        public int AddUser(User user)
         {
             if (user != null && user.Login != null && user.Password != null)
             {
@@ -26,7 +27,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
                     return 1;
                 }
             }
-                return null;
+            throw new UserCreationFailed();
         }
 
         public DataAccessLayer.IDataAccess SetDataSource

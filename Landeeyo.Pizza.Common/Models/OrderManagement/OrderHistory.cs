@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Landeeyo.Pizza.Common.Exceptions.AccountControl
+namespace Landeeyo.Pizza.Common.Models.OrderManagement
 {
-    public class UserExistsException : ApplicationException
+    public class OrderHistory
     {
+        //TODO Implement model
     }
 }

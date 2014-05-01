@@ -16,17 +16,25 @@ namespace Landeeyo.Pizza.Common.Models.AccountControl
         [Required]
         [MaxLength(25), MinLength(3)] 
         public string Login { get; set; }
+        
         [Required]
         [MaxLength(25), MinLength(7)] 
         public string Password { get; set; }
+        
         [Required]
         [MaxLength(25), MinLength(3)] 
         public string Firstname { get; set; }
+        
         [Required]
         [MaxLength(25), MinLength(3)] 
         public string Surname { get; set; }
+
         [Required]
-        [MaxLength(25), MinLength(5)] 
+        [MaxLength(25), MinLength(5)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [Required]
+        public bool IsActive { get; set; }
     }
 }

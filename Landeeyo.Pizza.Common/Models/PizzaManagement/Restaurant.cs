@@ -21,5 +21,8 @@ namespace Landeeyo.Pizza.Common.Models.PizzaManagement
         [Required]
         [MaxLength(25), MinLength(3)] 
         public string Name { get; set; }
+
+        [Required]
+        public bool IsActive { get; set; }
     }
 }
