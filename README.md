@@ -5,14 +5,15 @@ Status:
 
 Used technologies:
 - C#
-- ASP.MVC
-- nUnit or xUnit
+- ASP.NET MVC
+- xUnit
 - Moq
-- Entity Framework?
+- Entity Framework (code first)
 
 Used design patterns:
 - MVC
 - Dependency injection
+- Unit of work & repository
 
 Aims:
 - Test driven development comprehension
