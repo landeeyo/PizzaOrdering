@@ -1,6 +1,7 @@
 ﻿using Landeeyo.Pizza.Common.Models.AccountControl;
 using Landeeyo.Pizza.Common.Models.Log;
 using Landeeyo.Pizza.Common.Models.PizzaManagement;
+using Repository.Pattern.Ef6;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Landeeyo.Pizza.DataAccessLayer.EntityConfig
 {
-    public class DatabaseContext : DbContext
+    public class DatabaseContext : DataContext
     {
         public DatabaseContext()
             : base("name=DatabaseContextConnectionString")

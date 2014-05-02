@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Repository.Pattern.Ef6;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Landeeyo.Pizza.Common.Models.AccountControl
@@ -7,7 +8,7 @@ namespace Landeeyo.Pizza.Common.Models.AccountControl
     /// User model
     /// </summary>
     [Table("User")]
-    public class User
+    public class User : Entity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserID { get; set; }
