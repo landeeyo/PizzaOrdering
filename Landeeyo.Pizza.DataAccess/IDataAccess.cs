@@ -1,5 +1,6 @@
 ﻿using Landeeyo.Pizza.Common.Models.AccountControl;
 using Landeeyo.Pizza.Common.Models.PizzaManagement;
+using Landeeyo.Pizza.DataAccessLayer.EntityConfig;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,17 @@ namespace Landeeyo.Pizza.DataAccessLayer
 {
     public interface IDataAccess
     {
+        DatabaseContext GetContext { get; }
+        void Commit();
+        void Rollback();
+
         #region Account control layer
 
         User GetUserByLogin(string login);
         void AddUser(User user);
+        void RemoveUserByID(int userID);
+        void UpdateUser(User user);
+        User GetUserByID(int userID);
 
         #endregion
 

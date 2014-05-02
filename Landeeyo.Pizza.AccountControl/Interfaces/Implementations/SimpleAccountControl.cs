@@ -44,9 +44,57 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             }
         }
 
+        public void RemoveUserByID(int userID)
+        {
+            try
+            {
+                User user = _dataSource.GetUserByID(userID);
+                user.IsActive = false;
+                _dataSource.UpdateUser(user);
+            }
+            catch (Exception ex)
+            {
+                throw new UserException(ex);
+            }
+        }
+
+        public void UpdateUser(User user)
+        {
+            try
+            {
+                _dataSource.UpdateUser(user);
+            }
+            catch (Exception ex)
+            {
+                throw new UserException(ex);
+            }
+        }
+
+        public User GetUserByID(int userID)
+        {
+            try
+            {
+                return _dataSource.GetUserByID(userID);
+            }
+            catch (Exception ex)
+            {
+                throw new UserException(ex);
+            }
+        }
+
         public DataAccessLayer.IDataAccess SetDataSource
         {
             set { _dataSource = value; }
+        }
+
+        public void Commit()
+        {
+            _dataSource.Commit();
+        }
+
+        public void Rollback()
+        {
+            _dataSource.Rollback();
         }
     }
 }

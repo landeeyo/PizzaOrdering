@@ -10,7 +10,12 @@ namespace Landeeyo.Pizza.AccountControl.Interfaces
     {
         bool AuthorizeUser(string login, string password);
         void AddUser(User user);
+        void RemoveUserByID(int userID);
+        void UpdateUser(User user);
+        User GetUserByID(int userID);
 
         IDataAccess SetDataSource { set; }
+        void Commit();
+        void Rollback();
     }
 }

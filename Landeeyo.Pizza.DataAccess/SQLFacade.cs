@@ -7,29 +7,93 @@ using Landeeyo.Pizza.Common.Models.AccountControl;
 using Landeeyo.Pizza.DataAccessLayer.EntityConfig;
 using Landeeyo.Pizza.Common.Exceptions.AccountControl;
 using Landeeyo.Pizza.Common.Exceptions.PizzaManagement;
+using System.Data.Entity.Core.Objects;
 
 namespace Landeeyo.Pizza.DataAccessLayer
 {
     public class SQLFacade : IDataAccess
     {
+        #region Unit of work
+
+        private IUnitOfWork _unitOfWork;
+
+        public SQLFacade(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public DatabaseContext GetContext
+        {
+            get
+            {
+                if (_unitOfWork.Context == null)
+                {
+                    _unitOfWork.Context = new DatabaseContext();
+                    _unitOfWork.Context.Database.Connection.Open();
+                    _unitOfWork.Transaction = _unitOfWork.Context.Database.Connection.BeginTransaction();
+                }
+
+                return (DatabaseContext)_unitOfWork.Context;
+            }
+        }
+
+        public void Commit()
+        {
+            _unitOfWork.Commit();
+            
+        }
+
+        public void Rollback()
+        {
+            _unitOfWork.Dispose();
+        }
+
+        #endregion
+
         #region Account control layer
 
         public User GetUserByLogin(string login)
         {
-            using (var context = new DatabaseContext())
-            {
-                return context.Users.Where(x => x.Login == login).SingleOrDefault();
-            }
+            //using (var context = new DatabaseContext())
+            //{
+            //    return context.Users.Where(x => x.Login == login).SingleOrDefault();
+            //}
+            var r = GetContext.Users.ToList();
+            var result = GetContext.Users.Where(x => x.Login == login).SingleOrDefault();
+            return result;
         }
 
         public void AddUser(User user)
         {
-            using (var context = new DatabaseContext())
-            {
-                context.Users.Add(user);
-                context.SaveChanges();
-            }
+            //using (var context = new DatabaseContext())
+            //{
+            //    context.Users.Add(user);
+            //    context.SaveChanges();
+            //}
+            GetContext.Users.Add(user);
         }
+
+        public void RemoveUserByID(int userID)
+        {
+            //using (var context = new DatabaseContext())
+            //{
+            //    context.Users.Remove(context.Users.Where(x => x.UserID == userID).SingleOrDefault());
+            //    context.SaveChanges();
+            //}
+            GetContext.Users.Remove(GetUserByID(userID));
+        }
+
+        public void UpdateUser(User user)
+        {
+            User contextUser = GetUserByID(user.UserID);
+            contextUser = user;
+        }
+
+        public User GetUserByID(int userID)
+        {
+            return GetContext.Users.Where(x => x.UserID == userID).SingleOrDefault();
+        }
+
 
         #endregion
 
@@ -89,5 +153,8 @@ namespace Landeeyo.Pizza.DataAccessLayer
         }
 
         #endregion
+        
+
+        
     }
 }

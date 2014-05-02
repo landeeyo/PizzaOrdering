@@ -251,3 +251,5 @@ Landeeyo.Pizza.Mail/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f72
 Landeeyo.Pizza.Mail/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
 Landeeyo.Pizza.DataAccess/obj/Debug/Landeeyo.Pizza.DataAccessLayer.Migrations.Log.resources
 Landeeyo.Pizza.DataAccess/obj/Debug/Landeeyo.Pizza.DataAccessLayer.Migrations.LogModel.resources
+Landeeyo.Pizza.Test/bin/Debug/Ninject.dll
+Landeeyo.Pizza.Test/bin/Debug/Ninject.xml
