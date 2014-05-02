@@ -17,7 +17,6 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
         {
             _ninjectKernel = new StandardKernel();
             _ninjectKernel.Bind<IPizzaManagement>().To<SimplePizzaManagement>();
-            _ninjectKernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             _ninjectKernel.Bind<IDataAccess>().To<SQLFacade>();
         }
 

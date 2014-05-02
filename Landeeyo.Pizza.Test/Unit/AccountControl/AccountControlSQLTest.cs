@@ -26,7 +26,6 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
         {
             _ninjectKernel = new StandardKernel();
             _ninjectKernel.Bind<IAccountControl>().To<SimpleAccountControl>();
-            _ninjectKernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             _ninjectKernel.Bind<IDataAccess>().To<SQLFacade>();
         }
 
@@ -69,7 +68,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
 
             //Cleanup
             //_dataAccess.RemoveUserByID(properUser.UserID);
-            _accountControl.Rollback();
+            //_accountControl.Rollback();
 
             #endregion
 
@@ -112,7 +111,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
 
             //Cleanup
             //_dataAccess.RemoveUserByID(testUser.UserID);
-            _accountControl.Rollback();
+            //_accountControl.Rollback();
 
             #endregion
 

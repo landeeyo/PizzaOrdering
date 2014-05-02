@@ -86,15 +86,5 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
         {
             set { _dataSource = value; }
         }
-
-        public void Commit()
-        {
-            _dataSource.Commit();
-        }
-
-        public void Rollback()
-        {
-            _dataSource.Rollback();
-        }
     }
 }

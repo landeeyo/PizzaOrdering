@@ -11,10 +11,6 @@ namespace Landeeyo.Pizza.DataAccessLayer
 {
     public interface IDataAccess
     {
-        DatabaseContext GetContext { get; }
-        void Commit();
-        void Rollback();
-
         #region Account control layer
 
         User GetUserByLogin(string login);
