@@ -19,7 +19,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
         private IAccountControl _accountControl;
         private IDataAccess _dataAccess;
 
-        private IAccountControl _pizzaManagement;
+        //private IAccountControl _pizzaManagement;
         IKernel _ninjectKernel;
 
         public AccountControlSQLTest()
