@@ -22,7 +22,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
                 var user = _dataSource.GetUserByLogin(login);
                 if (user != null)
                 {
-                    return user.Password == password;
+                    return user.Password == password && user.IsActive == true;
                 }
                 else
                 {
@@ -79,7 +79,12 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
         {
             try
             {
-                return _dataSource.GetUserByID(userID);
+                var result = _dataSource.GetUserByID(userID);
+                if (!result.IsActive)
+                {
+                    throw new UserException();
+                }
+                return result;
             }
             catch (Exception ex)
             {

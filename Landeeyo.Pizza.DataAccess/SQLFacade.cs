@@ -1,7 +1,6 @@
 ﻿using Landeeyo.Pizza.Common.Models.AccountControl;
 using Landeeyo.Pizza.Common.Models.PizzaManagement;
 using Landeeyo.Pizza.DataAccessLayer.EntityConfig;
-using Landeeyo.Pizza.DataAccessLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +9,19 @@ namespace Landeeyo.Pizza.DataAccessLayer
 {
     public class SQLFacade : IDataAccess
     {
-        private IUserRepository _userRepository;
-        private UnitOfWork _unitOfWork;
+        private IUnitOfWork _unitOfWork;
 
-        public SQLFacade()
+        public SQLFacade(IUnitOfWork unitOfWork)
         {
-            _userRepository = new UserRepository(new DatabaseContext());
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = unitOfWork;
         }
 
-        #region Account control layer
+        public void Save()
+        {
+            _unitOfWork.Save();
+        }
+
+        #region Account control
 
         public User GetUserByLogin(string login)
         {
@@ -28,85 +30,51 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
         public void AddUser(User user)
         {
-            _userRepository.Insert(user);
+            _unitOfWork.UserRepository.Insert(user);
         }
 
         public void RemoveUserByID(int userID)
         {
-            _userRepository.Delete(userID);
+            _unitOfWork.UserRepository.Delete(userID);
         }
 
         public void UpdateUser(User user)
         {
-            _userRepository.Update(user);
+            _unitOfWork.UserRepository.Update(user);
         }
 
         public User GetUserByID(int userID)
         {
-            return _userRepository.GetByID(userID);
+            return _unitOfWork.UserRepository.GetByID(userID);
         }
 
         #endregion
 
-        //#region Pizza management layer
+        #region Pizza management
 
-        //public void AddPizza(Common.Models.PizzaManagement.Pizza pizza)
-        //{
-        //    using (var context = new DatabaseContext())
-        //    {
-        //        pizza.Restaurant = context.Restaurants.Where(x => x.RestaurantID == pizza.RestaurantID).SingleOrDefault();
-        //        context.Pizzas.Add(pizza);
-        //        context.SaveChanges();
-        //    }
-        //}
+        public void AddPizza(Common.Models.PizzaManagement.Pizza pizza)
+        {
+            _unitOfWork.PizzaRepository.Insert(pizza);
+        }
 
-        //public void RemovePizzaByPizzaID(int pizzaID)
-        //{
-        //    using (var context = new DatabaseContext())
-        //    {
-        //        context.Pizzas.Remove(context.Pizzas.Where(x => x.PizzaID == pizzaID).SingleOrDefault());
-        //        context.SaveChanges();
-        //    }
-        //}
+        public void RemovePizzaByID(int pizzaID)
+        {
+            _unitOfWork.PizzaRepository.Delete(pizzaID);
+        }
 
-        //public List<Common.Models.PizzaManagement.Pizza> GetPizzaListByRestaurantID(int restaurantID)
-        //{
-        //    using (var context = new DatabaseContext())
-        //    {
-        //        return context.Pizzas.Where(x => x.RestaurantID == restaurantID).ToList();
-        //    }
-        //}
+        public void UpdatePizza(Common.Models.PizzaManagement.Pizza pizza)
+        {
+            _unitOfWork.PizzaRepository.Update(pizza);
+        }
 
-        //public void AddRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
-        //{
-        //    using (var context = new DatabaseContext())
-        //    {
-        //        context.Restaurants.Add(restaurant);
-        //        context.SaveChanges();
-        //    }
-        //}
+        public Common.Models.PizzaManagement.Pizza GetPizzaByID(int pizzaID)
+        {
+            return _unitOfWork.PizzaRepository.GetByID(pizzaID);
+        }
 
-        //public void RemoveRestaurantByRestaurantID(int restaurantID)
-        //{
-        //    using (var context = new DatabaseContext())
-        //    {
-        //        context.Restaurants.Remove(context.Restaurants.Where(x => x.RestaurantID == restaurantID).SingleOrDefault());
-        //        context.SaveChanges();
-        //    }
-        //}
+        #endregion
 
-        //public Common.Models.PizzaManagement.Restaurant GetRestaurantByName(string restaurantName)
-        //{
-        //    using (var context = new DatabaseContext())
-        //    {
-        //        return context.Restaurants.Where(x => x.Name == restaurantName).SingleOrDefault();
-        //    }
-        //}
-
-        //#endregion
-
-
-        #region Restaurant management layer
+        #region Restaurant management
 
         public void AddRestaurant(Restaurant restaurant)
         {
@@ -118,11 +86,16 @@ namespace Landeeyo.Pizza.DataAccessLayer
             return _unitOfWork.RestaurantRepository.Get(x => x.Name == name).SingleOrDefault();
         }
 
-        #endregion
-
-        public void Save()
+        public void RemoveRestaurantByID(int restaurantID)
         {
-            _unitOfWork.Save();
+            _unitOfWork.RestaurantRepository.Delete(restaurantID);
         }
+
+        public void UpdateRestaurantByID(Restaurant restaurant)
+        {
+            _unitOfWork.RestaurantRepository.Update(restaurant);
+        }
+
+        #endregion
     }
 }

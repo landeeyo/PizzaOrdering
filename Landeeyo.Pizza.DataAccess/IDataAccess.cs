@@ -17,7 +17,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
         #endregion
 
-        #region Account control layer
+        #region Account control
 
         User GetUserByLogin(string login);
         void AddUser(User user);
@@ -27,21 +27,20 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
         #endregion
 
-        #region Pizza management layer
+        #region Pizza management
 
-        //void AddPizza(Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza pizza);
-        //void RemovePizzaByPizzaID(int pizzaID);
-        //List<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza> GetPizzaListByRestaurantID(int restaurantID);
-
-        //void AddRestaurant(Restaurant restaurant);
-        //void RemoveRestaurantByRestaurantID(int restaurantID);
-        //Restaurant GetRestaurantByName(string restaurantName);
+        void AddPizza(Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza pizza);
+        void RemovePizzaByID(int pizzaID);
+        void UpdatePizza(Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza pizza);
+        Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza GetPizzaByID(int pizzaID);
 
         #endregion        
 
-        #region Restaurant management layer
+        #region Restaurant management
 
         void AddRestaurant(Restaurant restaurant);
+        void RemoveRestaurantByID(int restaurantID);
+        void UpdateRestaurantByID(Restaurant restaurant);
         Restaurant GetRestaurantByName(string name);
 
         #endregion

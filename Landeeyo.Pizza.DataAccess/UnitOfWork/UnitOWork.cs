@@ -1,30 +1,42 @@
-﻿using Landeeyo.Pizza.Common.Models.PizzaManagement;
+﻿using Landeeyo.Pizza.Common.Models.AccountControl;
+using Landeeyo.Pizza.Common.Models.PizzaManagement;
 using Landeeyo.Pizza.DataAccessLayer.EntityConfig;
-using Landeeyo.Pizza.DataAccessLayer.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Landeeyo.Pizza.DataAccessLayer
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
         private DatabaseContext context = new DatabaseContext();
-        private GenericRepository<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza> pizzaRepository;
-        private GenericRepository<Restaurant> restaurantRepository;
+        
+        #region Repositories
+
+        private GenericRepository<User> _userRepository;
+        private GenericRepository<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza> _pizzaRepository;
+        private GenericRepository<Restaurant> _restaurantRepository;
+
+        public GenericRepository<User> UserRepository
+        {
+            get
+            {
+                if (this._userRepository == null)
+                {
+                    this._userRepository = new GenericRepository<User>(context);
+                }
+                return UserRepository;
+            }
+        }
 
         public GenericRepository<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza> PizzaRepository
         {
             get
             {
 
-                if (this.pizzaRepository == null)
+                if (this._pizzaRepository == null)
                 {
-                    this.pizzaRepository = new GenericRepository<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza>(context);
+                    this._pizzaRepository = new GenericRepository<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza>(context);
                 }
-                return pizzaRepository;
+                return _pizzaRepository;
             }
         }
 
@@ -33,13 +45,15 @@ namespace Landeeyo.Pizza.DataAccessLayer
             get
             {
 
-                if (this.restaurantRepository == null)
+                if (this._restaurantRepository == null)
                 {
-                    this.restaurantRepository = new GenericRepository<Restaurant>(context);
+                    this._restaurantRepository = new GenericRepository<Restaurant>(context);
                 }
-                return restaurantRepository;
+                return _restaurantRepository;
             }
         }
+
+        #endregion
 
         public void Save()
         {

@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Landeeyo.Pizza.DataAccessLayer.Repositories
+namespace Landeeyo.Pizza.DataAccessLayer
 {
     public class GenericRepository<TEntity> where TEntity : class
     {

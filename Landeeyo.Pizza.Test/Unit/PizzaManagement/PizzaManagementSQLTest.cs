@@ -2,8 +2,6 @@
 using Landeeyo.Pizza.DataAccessLayer;
 using Landeeyo.Pizza.PizzaManagement.Interfaces;
 using Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations;
-using Ninject;
-using System;
 using Xunit;
 
 namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
@@ -11,32 +9,19 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
     public class PizzaManagementSQLTest
     {
         private IPizzaManagement _pizzaManagement;
+        private IDataAccess _dataAccess;
 
         public PizzaManagementSQLTest()
         {
             _pizzaManagement = new SimplePizzaManagement();
-            _pizzaManagement.SetDataSource = new SQLFacade();
-        }
-
-        [Fact]
-        public void CreateAndGetRestaurantTest()
-        {
-            Restaurant restaurant =
-               new Restaurant()
-               {
-                   Name = "PizzaHut",
-               };
-
-            _pizzaManagement.AddRestaurant(restaurant);
-            var r = _pizzaManagement.GetRestaurantByName(restaurant.Name);
-            _pizzaManagement.Save();
-            Assert.True(r != null);
+            _dataAccess = new SQLFacade(new UnitOfWork());
+            _pizzaManagement.SetDataSource = _dataAccess;
         }
 
         [Fact]
         public void CreateGetAndRemoveRestaurantTest()
         {
-            //arrange
+            #region Arrange
 
             Restaurant restaurant =
                new Restaurant()
@@ -44,43 +29,29 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
                    Name = "PizzaHut",
                };
 
-            //act
-            _pizzaManagement.AddRestaurant(restaurant);
-            Restaurant restaurant2 = _pizzaManagement.GetRestaurantByName(restaurant.Name);
-            _pizzaManagement.RemoveRestaurantByRestaurantID(restaurant.RestaurantID);
+            #endregion
 
-            //assert
-            Assert.True(TestHelper.ArePropertiesEqual(restaurant, restaurant2));
-        }
-
-        [Fact]
-        public void CreateAndRemovePizzaTest()
-        {
-            //arrange
-
-            Restaurant restaurant =
-               new Restaurant()
-               {
-                   Name = "PizzaHut",
-               };
+            #region Act
 
             _pizzaManagement.AddRestaurant(restaurant);
+            _pizzaManagement.Save();
+            var result = _pizzaManagement.GetRestaurantByName(restaurant.Name);
 
-            Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza pizza =
-               new Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza()
-               {
-                   Name = "Capriciosa",
-                   Price = 21,
-                   RestaurantID = restaurant.RestaurantID,
-               };
+            #region Cleanup
 
-            //act
-            _pizzaManagement.AddPizza(pizza);
-            _pizzaManagement.RemovePizzaByPizzaID(pizza.PizzaID);
-            _pizzaManagement.RemoveRestaurantByRestaurantID(restaurant.RestaurantID);
+            _pizzaManagement.RemovePizzaByPizzaID(result.RestaurantID);
+            _pizzaManagement.Save();
 
-            //assert
-            Assert.True(pizza.PizzaID > 0);
+            #endregion
+
+            #endregion
+
+            #region Assert
+
+            Assert.True(result != null);
+            Assert.True(result.Name == restaurant.Name);
+
+            #endregion           
         }
     }
 }
