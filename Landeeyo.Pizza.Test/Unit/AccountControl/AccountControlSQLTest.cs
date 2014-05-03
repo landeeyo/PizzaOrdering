@@ -4,7 +4,6 @@ using Landeeyo.Pizza.Common.Exceptions.AccountControl;
 using Landeeyo.Pizza.Common.Models.AccountControl;
 using Landeeyo.Pizza.DataAccessLayer;
 using Landeeyo.Pizza.DataAccessLayer.EntityConfig;
-using Landeeyo.Pizza.DataAccessLayer.Services;
 using Ninject;
 using Repository.Pattern.DataContext;
 using Repository.Pattern.Ef6;
@@ -33,32 +32,31 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             _ninjectKernel = new StandardKernel();
             _ninjectKernel.Bind<IAccountControl>().To<SimpleAccountControl>();
             _ninjectKernel.Bind<IDataAccess>().To<SQLFacade>();
-            _ninjectKernel.Bind<IUserService>().To<UserService>();
         }
 
         [Fact]
         public void CreateAndAuthorizeUserTest()
         {
-            IDataContextAsync context = new DatabaseContext();
-            IUnitOfWorkAsync unitOfWork = new UnitOfWork(context);
-            IRepository<User> repository = new Repository<User>(context, unitOfWork);
-            IUserService userService = new UserService(repository);
+            //IDataContextAsync context = new DatabaseContext();
+            //IUnitOfWorkAsync unitOfWork = new UnitOfWork(context);
+            //IRepository<User> repository = new Repository<User>(context, unitOfWork);
+            //IUserService userService = new UserService(repository);
 
-            var user = new User()
-                {
-                    Email = "a@a.pl",
-                    Firstname = "Adffsf",
-                    IsActive = true,
-                    Login = "asdffda",
-                    Password = "absdfsdfdfsdfc",
-                    Surname = "jndssdjsd"
-                };
-            user.ObjectState = Repository.Pattern.Infrastructure.ObjectState.Added;
+            //var user = new User()
+            //    {
+            //        Email = "a@a.pl",
+            //        Firstname = "Adffsf",
+            //        IsActive = true,
+            //        Login = "asdffda",
+            //        Password = "absdfsdfdfsdfc",
+            //        Surname = "jndssdjsd"
+            //    };
+            //user.ObjectState = Repository.Pattern.Infrastructure.ObjectState.Added;
             
-            int id = userService.Add(user).UserID;
-            unitOfWork.SaveChanges();
-            var tmp = repository.Queryable().Where(x => x.Email == "a@a.pl");
-            var user2 = userService.GetByID(id);
+            //int id = userService.Add(user).UserID;
+            //unitOfWork.SaveChanges();
+            //var tmp = repository.Queryable().Where(x => x.Email == "a@a.pl");
+            //var user2 = userService.GetByID(id);
             //Assert.True(user2 != null);
 
            

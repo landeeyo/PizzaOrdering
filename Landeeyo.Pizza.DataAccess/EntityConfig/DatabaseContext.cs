@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Landeeyo.Pizza.DataAccessLayer.EntityConfig
 {
-    public class DatabaseContext : DataContext
+    public class DatabaseContext : DbContext
     {
         public DatabaseContext()
             : base("name=DatabaseContextConnectionString")
