@@ -14,7 +14,6 @@ namespace Landeeyo.Pizza.Common.Models.AccountControl
         public int UserID { get; set; }
 
         [Required]
-        [Key]
         public string Login { get; set; }
 
         [Required]

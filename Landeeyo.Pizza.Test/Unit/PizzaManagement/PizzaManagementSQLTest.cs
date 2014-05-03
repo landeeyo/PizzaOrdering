@@ -39,8 +39,8 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
 
             #region Cleanup
 
-            _pizzaManagement.RemovePizzaByPizzaID(result.RestaurantID);
-            _pizzaManagement.Save();
+            _dataAccess.RemoveRestaurantByID(result.RestaurantID);
+            _dataAccess.Save();
 
             #endregion
 

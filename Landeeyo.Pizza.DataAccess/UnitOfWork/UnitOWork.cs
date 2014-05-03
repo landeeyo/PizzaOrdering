@@ -23,7 +23,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
                 {
                     this._userRepository = new GenericRepository<User>(context);
                 }
-                return UserRepository;
+                return _userRepository;
             }
         }
 

@@ -25,7 +25,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
         public User GetUserByLogin(string login)
         {
-            throw new NotImplementedException();
+            return _unitOfWork.UserRepository.Get(x => x.Login == login).SingleOrDefault();
         }
 
         public void AddUser(User user)
