@@ -11,21 +11,32 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
     public class PizzaManagementSQLTest
     {
         private IPizzaManagement _pizzaManagement;
-        IKernel _ninjectKernel;
 
         public PizzaManagementSQLTest()
         {
-            _ninjectKernel = new StandardKernel();
-            _ninjectKernel.Bind<IPizzaManagement>().To<SimplePizzaManagement>();
-            _ninjectKernel.Bind<IDataAccess>().To<SQLFacade>();
+            _pizzaManagement = new SimplePizzaManagement();
+            _pizzaManagement.SetDataSource = new SQLFacade();
+        }
+
+        [Fact]
+        public void CreateAndGetRestaurantTest()
+        {
+            Restaurant restaurant =
+               new Restaurant()
+               {
+                   Name = "PizzaHut",
+               };
+
+            _pizzaManagement.AddRestaurant(restaurant);
+            var r = _pizzaManagement.GetRestaurantByName(restaurant.Name);
+            _pizzaManagement.Save();
+            Assert.True(r != null);
         }
 
         [Fact]
         public void CreateGetAndRemoveRestaurantTest()
         {
             //arrange
-            _pizzaManagement = _ninjectKernel.Get<IPizzaManagement>();
-            _pizzaManagement.SetDataSource = _ninjectKernel.Get<IDataAccess>();
 
             Restaurant restaurant =
                new Restaurant()
@@ -46,8 +57,6 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
         public void CreateAndRemovePizzaTest()
         {
             //arrange
-            _pizzaManagement = _ninjectKernel.Get<IPizzaManagement>();
-            _pizzaManagement.SetDataSource = _ninjectKernel.Get<IDataAccess>();
 
             Restaurant restaurant =
                new Restaurant()

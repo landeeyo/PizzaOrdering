@@ -15,5 +15,6 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces
         Restaurant GetRestaurantByName(string restaurantName);
 
         IDataAccess SetDataSource { set; }
+        void Save();
     }
 }

@@ -15,5 +15,6 @@ namespace Landeeyo.Pizza.AccountControl.Interfaces
         User GetUserByID(int userID);
 
         IDataAccess SetDataSource { set; }
+        void Save();
     }
 }

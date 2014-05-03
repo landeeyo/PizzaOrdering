@@ -84,7 +84,11 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="SQLFacade.cs" />
+    <Compile Include="UnitOfWork\UnitOWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\External\Repository.Pattern.Ef6\Repository.Pattern.Ef6.csproj">

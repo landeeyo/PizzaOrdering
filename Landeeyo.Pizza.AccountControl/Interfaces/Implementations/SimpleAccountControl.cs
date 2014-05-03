@@ -10,6 +10,11 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
     {
         IDataAccess _dataSource;
 
+        public void Save()
+        {
+            _dataSource.Save();
+        }
+
         public bool AuthorizeUser(string login, string password)
         {
             try

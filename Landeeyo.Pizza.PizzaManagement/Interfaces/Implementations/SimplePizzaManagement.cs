@@ -12,6 +12,11 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
     {
         IDataAccess _dataSource;
 
+        public void Save()
+        {
+            _dataSource.Save();
+        }
+
         public DataAccessLayer.IDataAccess SetDataSource
         {
             set { _dataSource = value; }
@@ -21,7 +26,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         {
             try
             {
-                _dataSource.AddPizza(pizza);
+                //_dataSource.AddPizza(pizza);
             }
             catch (Exception ex)
             {
@@ -33,7 +38,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         {
             try
             {
-                _dataSource.RemovePizzaByPizzaID(pizzaID);
+                //_dataSource.RemovePizzaByPizzaID(pizzaID);
             }
             catch (Exception ex)
             {
@@ -45,7 +50,8 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         {
             try
             {
-                return _dataSource.GetPizzaListByRestaurantID(restaurantID);
+                //return _dataSource.GetPizzaListByRestaurantID(restaurantID);
+                return null;
             }
             catch (Exception ex)
             {
@@ -69,7 +75,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         {
             try
             {
-                _dataSource.RemoveRestaurantByRestaurantID(restaurantID);
+                //_dataSource.RemoveRestaurantByRestaurantID(restaurantID);
             }
             catch (Exception ex)
             {
