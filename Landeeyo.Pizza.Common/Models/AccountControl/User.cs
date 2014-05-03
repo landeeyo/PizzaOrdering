@@ -1,5 +1,4 @@
-﻿using Repository.Pattern.Ef6;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Landeeyo.Pizza.Common.Models.AccountControl

@@ -1,14 +1,8 @@
 ﻿using Landeeyo.Pizza.Common.Models.AccountControl;
 using Landeeyo.Pizza.Common.Models.Log;
 using Landeeyo.Pizza.Common.Models.PizzaManagement;
-using Repository.Pattern.Ef6;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Landeeyo.Pizza.DataAccessLayer.EntityConfig
 {
