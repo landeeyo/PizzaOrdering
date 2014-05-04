@@ -22,7 +22,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
                 var user = _dataSource.GetUserByLogin(login);
                 if (user != null)
                 {
-                    return user.Password == password && user.IsActive == true;
+                    return user.Password == password && !user.DeactivationDate.HasValue;
                 }
                 else
                 {
@@ -40,7 +40,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             try
             {
                 //Add user
-                user.IsActive = true;
+                user.CreateDate = DateTime.Now;
                 _dataSource.AddUser(user);
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             try
             {
                 User user = _dataSource.GetUserByID(userID);
-                user.IsActive = false;
+                user.DeactivationDate = DateTime.Now;
                 _dataSource.UpdateUser(user);
             }
             catch (Exception ex)

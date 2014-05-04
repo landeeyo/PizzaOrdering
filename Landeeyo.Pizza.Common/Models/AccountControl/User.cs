@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Landeeyo.Pizza.Common.Models.AccountControl
@@ -32,7 +33,10 @@ namespace Landeeyo.Pizza.Common.Models.AccountControl
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required]
-        public bool IsActive { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime? CreateDate { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? DeactivationDate { get; set; }
     }
 }

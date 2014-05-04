@@ -104,7 +104,7 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
             //Removing
             _accountControl.RemoveUserByID(updatedUser.UserID);
             _accountControl.Save();
-            var isRemoved = !_accountControl.GetUserByID(updatedUser.UserID).IsActive;
+            var isRemoved = _accountControl.GetUserByID(updatedUser.UserID).DeactivationDate.HasValue;
 
             #endregion
 
