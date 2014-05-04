@@ -79,12 +79,7 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
         {
             try
             {
-                var result = _dataSource.GetUserByID(userID);
-                if (!result.IsActive)
-                {
-                    throw new UserException();
-                }
-                return result;
+                return _dataSource.GetUserByID(userID);
             }
             catch (Exception ex)
             {

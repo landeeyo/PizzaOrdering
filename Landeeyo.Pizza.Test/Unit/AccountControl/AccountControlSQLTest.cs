@@ -66,17 +66,61 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
         {
             #region Arrange
 
+            string login = "testLogin";
+            string password = "testPassword";
+
+            var user = new User()
+            {
+                Login = login,
+                Password = password,
+                Firstname = "John",
+                Surname = "Locke",
+                Email = "john@locke.com",
+            };
+
+            string newLogin = "updatedLogin";
+            string newPassword = "updatedPassword";
+
             #endregion
 
             #region Act
 
+            #region Prepare
+
+            _accountControl.AddUser(user);
+            _accountControl.Save();
+
+            #endregion
+
+            #region Act
+
+            //Updating
+            var updatedUser = _accountControl.GetUserByID(user.UserID);
+            updatedUser.Login = newLogin;
+            updatedUser.Password = newPassword;
+            _accountControl.UpdateUser(updatedUser);
+            _accountControl.Save();
+            updatedUser = _accountControl.GetUserByID(updatedUser.UserID);
+            //Removing
+            _accountControl.RemoveUserByID(updatedUser.UserID);
+            _accountControl.Save();
+            var isRemoved = !_accountControl.GetUserByID(updatedUser.UserID).IsActive;
+
+            #endregion
+
             #region Cleanup
+
+            _dataAccess.RemoveUserByID(updatedUser.UserID);
+            _dataAccess.Save();
 
             #endregion
 
             #endregion
 
             #region Assert
+
+            Assert.True(updatedUser.Login == newLogin && updatedUser.Password == newPassword);
+            Assert.True(isRemoved);
 
             #endregion
         }
