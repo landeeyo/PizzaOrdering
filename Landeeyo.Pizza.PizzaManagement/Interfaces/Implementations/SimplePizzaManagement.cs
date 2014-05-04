@@ -22,6 +22,8 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             set { _dataSource = value; }
         }
 
+        #region Pizza
+
         public void AddPizza(Common.Models.PizzaManagement.Pizza pizza)
         {
             try
@@ -59,6 +61,20 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             }
         }
 
+        public Common.Models.PizzaManagement.Pizza GetPizzaByRestaurantNameAndPizzaName(string restaurant, string pizza)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePizza(Common.Models.PizzaManagement.Pizza pizza)
+        {
+            throw new NotImplementedException();
+        } 
+
+        #endregion
+
+        #region Restaurant
+
         public void AddRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
         {
             try
@@ -94,5 +110,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
                 throw new RestaurantException(ex);
             }
         }
+
+        #endregion
     }
 }

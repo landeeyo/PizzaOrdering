@@ -3,6 +3,7 @@ using Landeeyo.Pizza.DataAccessLayer;
 using Landeeyo.Pizza.PizzaManagement.Interfaces;
 using Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations;
 using Xunit;
+using System.Linq;
 
 namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
 {
@@ -51,7 +52,86 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
             Assert.True(result != null);
             Assert.True(result.Name == restaurant.Name);
 
-            #endregion           
+            #endregion
+        }
+
+        [Fact]
+        public void CRUDPizzaTest()
+        {
+            #region Arrange
+
+            Restaurant restaurant =
+               new Restaurant()
+               {
+                   Name = "PizzaHut",
+               };
+
+            var pizza =
+                new Common.Models.PizzaManagement.Pizza()
+                {
+                    Name = "Capriciosa",
+                    Price = 19.99,
+                };
+
+            double newPrice = 25.5;
+
+            #endregion
+
+            #region Act
+
+            #region Prepare
+
+            _pizzaManagement.AddRestaurant(restaurant);
+            _pizzaManagement.Save();
+
+            #endregion
+
+            #region Act
+
+            //Create and read
+            pizza.RestaurantID = restaurant.RestaurantID;
+            _pizzaManagement.AddPizza(pizza);
+            _pizzaManagement.Save();
+            int id = pizza.PizzaID;
+            var getPizza1 = _pizzaManagement.GetPizzaByRestaurantNameAndPizzaName(restaurant.Name, pizza.Name);
+            var getPizza2 = _pizzaManagement.GetPizzaListByRestaurantID(restaurant.RestaurantID).Where(x => x.Name == pizza.Name).SingleOrDefault();
+            var shouldBeEqual1 = TestHelper.ArePropertiesEqual(pizza, getPizza1);
+            var shouldBeEqual2 = TestHelper.ArePropertiesEqual(getPizza1, getPizza2);
+
+            //Update 
+            getPizza1.Price = newPrice;
+            _pizzaManagement.UpdatePizza(getPizza1);
+            _pizzaManagement.Save();
+            var getpizza2 = _pizzaManagement.GetPizzaByRestaurantNameAndPizzaName(getPizza1.Name, restaurant.Name);
+
+            //Delete
+            _pizzaManagement.RemovePizzaByPizzaID(pizza.PizzaID);
+            _pizzaManagement.Save();
+            var shouldBeNull = _pizzaManagement.GetPizzaByRestaurantNameAndPizzaName(restaurant.Name, pizza.Name);
+
+            #endregion
+
+            #region Cleanup
+
+            _dataAccess.RemovePizzaByID(pizza.PizzaID);
+            _dataAccess.RemoveRestaurantByID(restaurant.RestaurantID);
+            _dataAccess.Save();
+
+            #endregion
+
+            #endregion
+
+            #region Assert
+
+            Assert.True(id > 0);
+            Assert.True(getPizza1 != null);
+            Assert.True(getPizza2 != null);
+            Assert.True(getPizza2.Price == newPrice);
+            Assert.True(shouldBeEqual1);
+            Assert.True(shouldBeEqual2);
+            Assert.True(shouldBeNull == null);
+
+            #endregion
         }
     }
 }
