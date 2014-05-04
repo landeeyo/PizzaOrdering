@@ -8,7 +8,7 @@ namespace Landeeyo.Pizza.Common.Models.AccountControl
     /// User model
     /// </summary>
     [Table("User")]
-    public class User
+    public class User : ISoftDeletingEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserID { get; set; }

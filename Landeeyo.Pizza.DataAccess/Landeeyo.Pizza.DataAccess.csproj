@@ -90,6 +90,10 @@
     <Compile Include="Migrations\201405041052159_AddedUserDateTimes.Designer.cs">
       <DependentUpon>201405041052159_AddedUserDateTimes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405041219279_AddedSoftDeleteToSomeEntities.cs" />
+    <Compile Include="Migrations\201405041219279_AddedSoftDeleteToSomeEntities.Designer.cs">
+      <DependentUpon>201405041219279_AddedSoftDeleteToSomeEntities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
@@ -137,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405041052159_AddedUserDateTimes.resx">
       <DependentUpon>201405041052159_AddedUserDateTimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405041219279_AddedSoftDeleteToSomeEntities.resx">
+      <DependentUpon>201405041219279_AddedSoftDeleteToSomeEntities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

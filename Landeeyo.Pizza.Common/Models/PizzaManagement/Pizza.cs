@@ -12,7 +12,7 @@ namespace Landeeyo.Pizza.Common.Models.PizzaManagement
     /// Pizza model
     /// </summary>
     [Table("Pizza")]
-    public class Pizza
+    public class Pizza : ISoftDeletingEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
@@ -29,7 +29,10 @@ namespace Landeeyo.Pizza.Common.Models.PizzaManagement
         [ForeignKey("RestaurantID")]        
         public Restaurant Restaurant { get; set; }
 
-        [Required]
-        public bool IsActive { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime? CreateDate { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime? DeactivationDate { get; set; }
     }
 }

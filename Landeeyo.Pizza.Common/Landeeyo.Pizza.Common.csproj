@@ -49,6 +49,7 @@
     <Compile Include="Models\OrderManagement\OrderHistory.cs" />
     <Compile Include="Models\PizzaManagement\Pizza.cs" />
     <Compile Include="Models\PizzaManagement\Restaurant.cs" />
+    <Compile Include="Models\ISoftDeletingEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
