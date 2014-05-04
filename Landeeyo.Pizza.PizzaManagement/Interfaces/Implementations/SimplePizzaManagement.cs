@@ -69,7 +69,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         public void UpdatePizza(Common.Models.PizzaManagement.Pizza pizza)
         {
             throw new NotImplementedException();
-        } 
+        }
 
         #endregion
 
@@ -109,6 +109,11 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             {
                 throw new RestaurantException(ex);
             }
+        }
+
+        public void UpdateRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

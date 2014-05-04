@@ -20,7 +20,7 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
         }
 
         [Fact]
-        public void CreateGetAndRemoveRestaurantTest()
+        public void CRUDRestaurantTest()
         {
             #region Arrange
 
@@ -29,6 +29,7 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
                {
                    Name = "PizzaHut",
                };
+            string newName = "Telepizza";
 
             #endregion
 
@@ -36,16 +37,31 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
             {
                 #region Act
 
+                //Create and read
                 _pizzaManagement.AddRestaurant(restaurant);
                 _pizzaManagement.Save();
-                var result = _pizzaManagement.GetRestaurantByName(restaurant.Name);
+                var getRestaurant = _pizzaManagement.GetRestaurantByName(restaurant.Name);
+
+                //Update 
+                getRestaurant.Name = newName;
+                _pizzaManagement.UpdateRestaurant(getRestaurant);
+                _pizzaManagement.Save();
+                var getRestaurant2 = _pizzaManagement.GetRestaurantByName(newName);
+
+                //Delete
+                _pizzaManagement.RemoveRestaurantByRestaurantID(getRestaurant2.RestaurantID);
+                _pizzaManagement.Save();
+                var getRestaurant3 = _pizzaManagement.GetRestaurantByName(getRestaurant2.Name);
 
                 #endregion
 
                 #region Assert
 
-                Assert.True(result != null);
-                Assert.True(result.Name == restaurant.Name);
+                Assert.True(getRestaurant != null);
+                Assert.True(getRestaurant.RestaurantID > 0);
+                Assert.True(getRestaurant.Name == restaurant.Name);
+                Assert.True(getRestaurant2.Name == newName);
+                Assert.True(getRestaurant3 == null);
 
                 #endregion
 
@@ -54,7 +70,7 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
             {
                 #region Cleanup
 
-                _dataAccess.RemoveRestaurantByID(_dataAccess.GetRestaurantByName(restaurant.Name).RestaurantID);
+                _dataAccess.RemoveRestaurantByID(_dataAccess.GetRestaurantByName(newName).RestaurantID);
                 _dataAccess.Save();
 
                 #endregion

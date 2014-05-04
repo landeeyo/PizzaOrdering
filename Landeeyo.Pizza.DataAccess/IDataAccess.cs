@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Landeeyo.Pizza.DataAccessLayer
 {
+    /// <summary>
+    /// This layer gives higher order layers bare access to abstract database without any validation or business logic included (rather pure CRUD).
+    /// </summary>
     public interface IDataAccess
     {
         #region Global

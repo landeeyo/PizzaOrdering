@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 namespace Landeeyo.Pizza.PizzaManagement.Interfaces
 {
+    /// <summary>
+    /// This layer is responsible for data validation (for example not allow to duplicate restaurants name)
+    /// and filling unobvious fields (create date). It provides higher layers robust access to business data.
+    /// </summary>
     public interface IPizzaManagement
     {
         void AddPizza(Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza pizza);
@@ -14,6 +18,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces
 
         void AddRestaurant(Restaurant restaurant);
         void RemoveRestaurantByRestaurantID(int restaurantID);
+        void UpdateRestaurant(Restaurant restaurant);
         Restaurant GetRestaurantByName(string restaurantName);
 
         IDataAccess SetDataSource { set; }
