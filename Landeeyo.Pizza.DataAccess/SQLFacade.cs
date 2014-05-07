@@ -23,6 +23,25 @@ namespace Landeeyo.Pizza.DataAccessLayer
             _unitOfWork.Save();
         }
 
+        #region Transactions
+
+        public void BeginTransaction()
+        {
+            _unitOfWork.BeginTransaction();
+        }
+
+        public void Rollback()
+        {
+            _unitOfWork.Rollback();
+        }
+
+        public void Commit()
+        {
+            _unitOfWork.Commit();
+        }
+
+        #endregion
+
         #region Account control
 
         public User GetUserByLogin(string login)
@@ -74,6 +93,16 @@ namespace Landeeyo.Pizza.DataAccessLayer
             return _unitOfWork.PizzaRepository.GetByID(pizzaID);
         }
 
+        public List<Common.Models.PizzaManagement.Pizza> GetPizzaListByRestaurantID(int restaurantID)
+        {
+            return _unitOfWork.PizzaRepository.Get(x => x.RestaurantID == restaurantID).ToList();
+        }
+
+        public Common.Models.PizzaManagement.Pizza GetPizzaByRestaurantNameAndPizzaName(string restaurant, string pizza)
+        {
+            return _unitOfWork.PizzaRepository.Get(x => x.Restaurant.Name == restaurant).Where(x => x.Name == pizza).SingleOrDefault();
+        }
+
         #endregion
 
         #region Restaurant management
@@ -101,19 +130,5 @@ namespace Landeeyo.Pizza.DataAccessLayer
         #endregion
 
 
-        public void BeginTransaction()
-        {
-            _unitOfWork.BeginTransaction();
-        }
-
-        public void Rollback()
-        {
-            _unitOfWork.Rollback();
-        }
-
-        public void Commit()
-        {
-            _unitOfWork.Commit();
-        }
     }
 }

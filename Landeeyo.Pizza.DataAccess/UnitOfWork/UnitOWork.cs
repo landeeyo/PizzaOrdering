@@ -86,7 +86,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
         public void BeginTransaction()
         {
-            _transaction = _context.Database.BeginTransaction(IsolationLevel.ReadUncommitted);
+            _transaction = _context.Database.BeginTransaction(IsolationLevel.Serializable);
         }
 
         public void Rollback()

@@ -39,6 +39,8 @@ namespace Landeeyo.Pizza.DataAccessLayer
         void RemovePizzaByID(int pizzaID);
         void UpdatePizza(Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza pizza);
         Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza GetPizzaByID(int pizzaID);
+        List<Common.Models.PizzaManagement.Pizza> GetPizzaListByRestaurantID(int restaurantID);
+        Common.Models.PizzaManagement.Pizza GetPizzaByRestaurantNameAndPizzaName(string restaurant, string pizza);
 
         #endregion        
 

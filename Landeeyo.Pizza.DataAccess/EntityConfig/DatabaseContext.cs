@@ -11,7 +11,7 @@ namespace Landeeyo.Pizza.DataAccessLayer.EntityConfig
         public DatabaseContext()
             : base("name=DatabaseContextConnectionString")
         {
-            Configuration.AutoDetectChangesEnabled = true;
+            //Configuration.AutoDetectChangesEnabled = true;
         }
 
         public DbSet<User> Users { get; set; }

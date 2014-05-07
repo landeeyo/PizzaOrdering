@@ -12,15 +12,34 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
     {
         IDataAccess _dataSource;
 
+        public DataAccessLayer.IDataAccess SetDataSource
+        {
+            set { _dataSource = value; }
+        }
+
         public void Save()
         {
             _dataSource.Save();
         }
 
-        public DataAccessLayer.IDataAccess SetDataSource
+        #region Transactions
+
+        public void BeginTransaction()
         {
-            set { _dataSource = value; }
+            _dataSource.BeginTransaction();
         }
+
+        public void Commit()
+        {
+            _dataSource.Commit();
+        }
+
+        public void Rollback()
+        {
+            _dataSource.Rollback();
+        }
+
+        #endregion
 
         #region Pizza
 
@@ -28,7 +47,8 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         {
             try
             {
-                //_dataSource.AddPizza(pizza);
+                pizza.CreateDate = DateTime.Now;
+                _dataSource.AddPizza(pizza);
             }
             catch (Exception ex)
             {
@@ -40,7 +60,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         {
             try
             {
-                //_dataSource.RemovePizzaByPizzaID(pizzaID);
+                _dataSource.RemovePizzaByID(pizzaID);
             }
             catch (Exception ex)
             {
@@ -52,8 +72,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         {
             try
             {
-                //return _dataSource.GetPizzaListByRestaurantID(restaurantID);
-                return null;
+                return _dataSource.GetPizzaListByRestaurantID(restaurantID);
             }
             catch (Exception ex)
             {
@@ -63,12 +82,19 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
 
         public Common.Models.PizzaManagement.Pizza GetPizzaByRestaurantNameAndPizzaName(string restaurant, string pizza)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _dataSource.GetPizzaByRestaurantNameAndPizzaName(restaurant, pizza);
+            }
+            catch (Exception ex)
+            {
+                throw new PizzaException(ex);
+            }
         }
 
         public void UpdatePizza(Common.Models.PizzaManagement.Pizza pizza)
         {
-            throw new NotImplementedException();
+            _dataSource.UpdatePizza(pizza);
         }
 
         #endregion
@@ -79,6 +105,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         {
             try
             {
+                restaurant.CreateDate = DateTime.Now;
                 _dataSource.AddRestaurant(restaurant);
             }
             catch (Exception ex)
@@ -91,7 +118,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         {
             try
             {
-                //_dataSource.RemoveRestaurantByRestaurantID(restaurantID);
+                _dataSource.RemoveRestaurantByID(restaurantID);
             }
             catch (Exception ex)
             {
@@ -124,21 +151,5 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
         }
 
         #endregion
-
-
-        public void BeginTransaction()
-        {
-            _dataSource.BeginTransaction();
-        }
-
-        public void Commit()
-        {
-            _dataSource.Commit();
-        }
-
-        public void Rollback()
-        {
-            _dataSource.Rollback();
-        }
     }
 }
