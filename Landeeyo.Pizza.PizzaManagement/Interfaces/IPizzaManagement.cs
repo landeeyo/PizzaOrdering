@@ -23,5 +23,9 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces
 
         IDataAccess SetDataSource { set; }
         void Save();
+
+        void BeginTransaction();
+        void Commit();
+        void Rollback();
     }
 }

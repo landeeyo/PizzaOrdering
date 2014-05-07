@@ -2,12 +2,15 @@
 using Landeeyo.Pizza.Common.Models.PizzaManagement;
 using Landeeyo.Pizza.DataAccessLayer.EntityConfig;
 using System;
+using System.Data;
+using System.Data.Entity;
 
 namespace Landeeyo.Pizza.DataAccessLayer
 {
     public class UnitOfWork : IDisposable, IUnitOfWork
     {
-        private DatabaseContext context = new DatabaseContext();
+        private DatabaseContext _context = new DatabaseContext();
+        private DbContextTransaction _transaction;
         
         #region Repositories
 
@@ -21,7 +24,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
             {
                 if (this._userRepository == null)
                 {
-                    this._userRepository = new GenericRepository<User>(context);
+                    this._userRepository = new GenericRepository<User>(_context);
                 }
                 return _userRepository;
             }
@@ -34,7 +37,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
                 if (this._pizzaRepository == null)
                 {
-                    this._pizzaRepository = new GenericRepository<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza>(context);
+                    this._pizzaRepository = new GenericRepository<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza>(_context);
                 }
                 return _pizzaRepository;
             }
@@ -47,7 +50,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
                 if (this._restaurantRepository == null)
                 {
-                    this._restaurantRepository = new GenericRepository<Restaurant>(context);
+                    this._restaurantRepository = new GenericRepository<Restaurant>(_context);
                 }
                 return _restaurantRepository;
             }
@@ -57,7 +60,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
         public void Save()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         private bool disposed = false;
@@ -68,7 +71,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    _context.Dispose();
                 }
             }
             this.disposed = true;
@@ -78,6 +81,22 @@ namespace Landeeyo.Pizza.DataAccessLayer
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+
+        public void BeginTransaction()
+        {
+            _transaction = _context.Database.BeginTransaction(IsolationLevel.ReadUncommitted);
+        }
+
+        public void Rollback()
+        {
+            _transaction.Rollback();
+        }
+
+        public void Commit()
+        {
+            _transaction.Commit();
         }
     }
 }

@@ -17,6 +17,9 @@ namespace Landeeyo.Pizza.DataAccessLayer
         #region Global
 
         void Save();
+        void BeginTransaction();
+        void Rollback();
+        void Commit();
 
         #endregion
 
@@ -43,7 +46,7 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
         void AddRestaurant(Restaurant restaurant);
         void RemoveRestaurantByID(int restaurantID);
-        void UpdateRestaurantByID(Restaurant restaurant);
+        void UpdateRestaurant(Restaurant restaurant);
         Restaurant GetRestaurantByName(string name);
 
         #endregion

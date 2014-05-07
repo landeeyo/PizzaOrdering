@@ -3,6 +3,8 @@ using Landeeyo.Pizza.Common.Models.PizzaManagement;
 using Landeeyo.Pizza.DataAccessLayer.EntityConfig;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Objects;
 using System.Linq;
 
 namespace Landeeyo.Pizza.DataAccessLayer
@@ -91,11 +93,27 @@ namespace Landeeyo.Pizza.DataAccessLayer
             _unitOfWork.RestaurantRepository.Delete(restaurantID);
         }
 
-        public void UpdateRestaurantByID(Restaurant restaurant)
+        public void UpdateRestaurant(Restaurant restaurant)
         {
             _unitOfWork.RestaurantRepository.Update(restaurant);
         }
 
         #endregion
+
+
+        public void BeginTransaction()
+        {
+            _unitOfWork.BeginTransaction();
+        }
+
+        public void Rollback()
+        {
+            _unitOfWork.Rollback();
+        }
+
+        public void Commit()
+        {
+            _unitOfWork.Commit();
+        }
     }
 }

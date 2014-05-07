@@ -113,9 +113,32 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
 
         public void UpdateRestaurant(Common.Models.PizzaManagement.Restaurant restaurant)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _dataSource.UpdateRestaurant(restaurant);
+            }
+            catch (Exception ex)
+            {
+                throw new RestaurantException(ex);
+            }
         }
 
         #endregion
+
+
+        public void BeginTransaction()
+        {
+            _dataSource.BeginTransaction();
+        }
+
+        public void Commit()
+        {
+            _dataSource.Commit();
+        }
+
+        public void Rollback()
+        {
+            _dataSource.Rollback();
+        }
     }
 }

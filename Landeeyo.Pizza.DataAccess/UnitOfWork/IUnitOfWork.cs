@@ -8,6 +8,9 @@ namespace Landeeyo.Pizza.DataAccessLayer
     {
         void Dispose();
         void Save();
+        void BeginTransaction();
+        void Rollback();
+        void Commit();
 
         GenericRepository<Landeeyo.Pizza.Common.Models.PizzaManagement.Pizza> PizzaRepository { get; }
         GenericRepository<Restaurant> RestaurantRepository { get; }

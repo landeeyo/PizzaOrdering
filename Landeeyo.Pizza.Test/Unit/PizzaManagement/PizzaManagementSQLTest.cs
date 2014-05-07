@@ -20,6 +20,45 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
         }
 
         [Fact]
+        public void CRUTRestaurantTransactTest()
+        {
+            #region Arrange
+
+            Restaurant restaurant =
+               new Restaurant()
+               {
+                   Name = "PizzaHut",
+               };
+            string newName = "Telepizza";
+
+            #endregion
+
+            #region Act
+
+            _pizzaManagement.BeginTransaction();
+
+            _pizzaManagement.AddRestaurant(restaurant);
+            _pizzaManagement.Save();
+            int id = restaurant.RestaurantID;
+            var readed = _pizzaManagement.GetRestaurantByName(restaurant.Name);
+            restaurant.Name = newName;
+            _pizzaManagement.UpdateRestaurant(restaurant);
+            _pizzaManagement.Save();
+            var readed2 = _pizzaManagement.GetRestaurantByName(restaurant.Name);
+
+            _pizzaManagement.Rollback();
+
+            #endregion
+
+            #region Assert
+
+            Assert.True(id > 0);
+            Assert.True(readed != null && readed.RestaurantID > 0);
+            Assert.True(readed2 != null && readed2.RestaurantID > 0 && readed2.Name == newName);
+
+            #endregion
+        }
+
         public void CRUDRestaurantTest()
         {
             #region Arrange
@@ -66,7 +105,7 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
                 #endregion
 
             }
-            finally
+            catch
             {
                 #region Cleanup
 
@@ -77,7 +116,7 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
             }
         }
 
-        [Fact]
+
         public void CRUDPizzaTest()
         {
             #region Arrange
@@ -149,7 +188,7 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
 
                 #endregion
             }
-            finally
+            catch
             {
                 #region Cleanup
 
