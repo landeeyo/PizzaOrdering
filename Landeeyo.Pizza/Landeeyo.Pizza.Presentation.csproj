@@ -131,6 +131,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountControlController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,14 +221,36 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\AccountControl\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Landeeyo.Pizza.AccountControl\Landeeyo.Pizza.AccountControl.csproj">
+      <Project>{abca16de-b55c-4758-b1c5-4b468655f115}</Project>
+      <Name>Landeeyo.Pizza.AccountControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Landeeyo.Pizza.Common\Landeeyo.Pizza.Common.csproj">
+      <Project>{ebaa70e4-6fc7-40ff-ba50-942ac84fc9b3}</Project>
+      <Name>Landeeyo.Pizza.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Landeeyo.Pizza.DataAccess\Landeeyo.Pizza.DataAccess.csproj">
+      <Project>{04517626-0bf3-4134-a1e0-31cf60769195}</Project>
+      <Name>Landeeyo.Pizza.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Landeeyo.Pizza.Mail\Landeeyo.Pizza.Mail.csproj">
+      <Project>{6035fa0c-2d52-41cf-982a-6d63a01ad183}</Project>
+      <Name>Landeeyo.Pizza.Mail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Landeeyo.Pizza.PizzaManagement\Landeeyo.Pizza.PizzaManagement.csproj">
+      <Project>{07c10bf4-ba9f-49ae-a528-f95290645561}</Project>
+      <Name>Landeeyo.Pizza.PizzaManagement</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

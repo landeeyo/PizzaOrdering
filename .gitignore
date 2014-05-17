@@ -546,3 +546,15 @@ Landeeyo.Pizza.Test/bin/Debug/System.Web.Http.OData.dll
 Landeeyo.Pizza.Test/bin/Debug/System.Web.Http.OData.xml
 Landeeyo.Pizza.Test/bin/Debug/System.Web.Http.xml
 Landeeyo.Pizza.DataAccess/obj/Debug/Landeeyo.Pizza.DataAccessLayer.Migrations.RemoveKeyFromUserLogin.resources
+Landeeyo.Pizza/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+Landeeyo.Pizza/bin/EntityFramework.SqlServer.dll
+Landeeyo.Pizza/bin/Landeeyo.Pizza.AuthorizationLayer.dll
+Landeeyo.Pizza/bin/Landeeyo.Pizza.AuthorizationLayer.pdb
+Landeeyo.Pizza/bin/Landeeyo.Pizza.Common.dll
+Landeeyo.Pizza/bin/Landeeyo.Pizza.Common.pdb
+Landeeyo.Pizza/bin/Landeeyo.Pizza.DataAccessLayer.dll
+Landeeyo.Pizza/bin/Landeeyo.Pizza.DataAccessLayer.pdb
+Landeeyo.Pizza/bin/Landeeyo.Pizza.Mail.dll
+Landeeyo.Pizza/bin/Landeeyo.Pizza.Mail.pdb
+Landeeyo.Pizza/bin/Landeeyo.Pizza.PizzaManagement.dll
+Landeeyo.Pizza/bin/Landeeyo.Pizza.PizzaManagement.pdb

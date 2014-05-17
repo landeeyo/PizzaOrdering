@@ -1,0 +1,49 @@
+﻿@using Landeeyo.Pizza.Common.Models.AccountControl;
+
+@model User
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="loginForm">
+    <h2>Register</h2>
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Register</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Login)
+                    @Html.TextBoxFor(m => m.Login)
+                    @Html.ValidationMessageFor(m => m.Login)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.PasswordFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Firstname)
+                    @Html.PasswordFor(m => m.Firstname)
+                    @Html.ValidationMessageFor(m => m.Firstname)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Surname)
+                    @Html.PasswordFor(m => m.Surname)
+                    @Html.ValidationMessageFor(m => m.Surname)
+                </li>
+            </ol>
+            <input type="submit" value="Register" />
+        </fieldset>
+    }
+</section>
