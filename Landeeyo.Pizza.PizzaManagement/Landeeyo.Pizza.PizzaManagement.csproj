@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\Implementations\SimplePizzaManagement.cs" />
-    <Compile Include="Interfaces\IPizzaManagement.cs" />
+    <Compile Include="SimplePizzaManagement.cs" />
+    <Compile Include="IPizzaManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

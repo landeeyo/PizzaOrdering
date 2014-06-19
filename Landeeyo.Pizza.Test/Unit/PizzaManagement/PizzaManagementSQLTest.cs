@@ -14,9 +14,8 @@ namespace Landeeyo.Pizza.Test.Unit.PizzaManagement
 
         public PizzaManagementSQLTest()
         {
-            _pizzaManagement = new SimplePizzaManagement();
-            _dataAccess = new SQLFacade(new UnitOfWork());
-            _pizzaManagement.SetDataSource = _dataAccess;
+            _dataAccess = new SQLDataAccess(new UnitOfWork());
+            _pizzaManagement = new SimplePizzaManagement(_dataAccess);
         }
 
         [Fact]

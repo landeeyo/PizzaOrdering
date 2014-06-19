@@ -14,7 +14,7 @@ namespace Landeeyo.Pizza.AccountControl.Interfaces
         void UpdateUser(User user);
         User GetUserByID(int userID);
 
-        IDataAccess SetDataSource { set; }
+        //IDataAccess SetDataSource { set; }
         void Save();
     }
 }

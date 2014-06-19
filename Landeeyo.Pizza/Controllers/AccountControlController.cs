@@ -18,10 +18,10 @@ namespace Landeeyo.Pizza.Controllers
 
         public AccountControlController()
         {
+            //TODO This should be DI container managed
             _unitOfWork = new UnitOfWork();
-            _dataAccess = new SQLFacade(_unitOfWork);
-            _controller = new SimpleAccountControl();
-            _controller.SetDataSource = _dataAccess;
+            _dataAccess = new SQLDataAccess(_unitOfWork);
+            _controller = new SimpleAccountControl(_dataAccess);
         }
 
         //

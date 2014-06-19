@@ -25,11 +25,11 @@ namespace Landeeyo.Pizza.DataAccessLayer
 
         #region Account control
 
-        User GetUserByLogin(string login);
         void AddUser(User user);
         void RemoveUserByID(int userID);
         void UpdateUser(User user);
         User GetUserByID(int userID);
+        User GetUserByLogin(string login);
 
         #endregion
 

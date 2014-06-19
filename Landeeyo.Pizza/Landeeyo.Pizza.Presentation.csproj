@@ -243,10 +243,6 @@
       <Project>{04517626-0bf3-4134-a1e0-31cf60769195}</Project>
       <Name>Landeeyo.Pizza.DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Landeeyo.Pizza.Mail\Landeeyo.Pizza.Mail.csproj">
-      <Project>{6035fa0c-2d52-41cf-982a-6d63a01ad183}</Project>
-      <Name>Landeeyo.Pizza.Mail</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Landeeyo.Pizza.PizzaManagement\Landeeyo.Pizza.PizzaManagement.csproj">
       <Project>{07c10bf4-ba9f-49ae-a528-f95290645561}</Project>
       <Name>Landeeyo.Pizza.PizzaManagement</Name>

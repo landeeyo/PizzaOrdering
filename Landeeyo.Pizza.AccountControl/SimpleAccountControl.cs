@@ -8,7 +8,16 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
 {
     public class SimpleAccountControl : IAccountControl
     {
+        #region Initialization
+
         IDataAccess _dataSource;
+
+        public SimpleAccountControl(IDataAccess dataSource)
+        {
+            _dataSource = dataSource;
+        } 
+
+        #endregion
 
         public void Save()
         {
@@ -87,9 +96,6 @@ namespace Landeeyo.Pizza.AuthorizationLayer.Interfaces.Implementations
             }
         }
 
-        public DataAccessLayer.IDataAccess SetDataSource
-        {
-            set { _dataSource = value; }
-        }
+        
     }
 }

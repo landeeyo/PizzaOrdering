@@ -12,9 +12,9 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
     {
         IDataAccess _dataSource;
 
-        public DataAccessLayer.IDataAccess SetDataSource
+        public SimplePizzaManagement(IDataAccess dataSource)
         {
-            set { _dataSource = value; }
+            _dataSource = dataSource;
         }
 
         public void Save()
@@ -52,6 +52,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             }
             catch (Exception ex)
             {
+                //TODO log
                 throw new PizzaException(ex);
             }
         }
@@ -64,6 +65,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             }
             catch (Exception ex)
             {
+                //TODO log
                 throw new PizzaException(ex);
             }
         }
@@ -76,6 +78,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             }
             catch (Exception ex)
             {
+                //TODO log
                 throw new PizzaException(ex);
             }
         }
@@ -88,6 +91,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             }
             catch (Exception ex)
             {
+                //TODO log
                 throw new PizzaException(ex);
             }
         }
@@ -110,6 +114,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             }
             catch (Exception ex)
             {
+                //TOTO log
                 throw new RestaurantException(ex);
             }
         }
@@ -122,6 +127,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             }
             catch (Exception ex)
             {
+                //TODO log
                 throw new RestaurantException(ex);
             }
         }
@@ -134,6 +140,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             }
             catch (Exception ex)
             {
+                //TODO log
                 throw new RestaurantException(ex);
             }
         }
@@ -146,6 +153,7 @@ namespace Landeeyo.Pizza.PizzaManagement.Interfaces.Implementations
             }
             catch (Exception ex)
             {
+                //TODO log
                 throw new RestaurantException(ex);
             }
         }

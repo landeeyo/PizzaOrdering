@@ -13,9 +13,8 @@ namespace Landeeyo.Pizza.Test.Unit.AccountControl
 
         public AccountControlSQLTest()
         {
-            _accountControl = new SimpleAccountControl();
-            _dataAccess = new SQLFacade(new UnitOfWork());
-            _accountControl.SetDataSource = _dataAccess;
+            _dataAccess = new SQLDataAccess(new UnitOfWork());
+            _accountControl = new SimpleAccountControl(_dataAccess);            
         }
 
         [Fact]

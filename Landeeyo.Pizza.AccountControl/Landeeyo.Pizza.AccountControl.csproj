@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IAccountControl.cs" />
-    <Compile Include="Interfaces\Implementations\SimpleAccountControl.cs" />
+    <Compile Include="IAccountControl.cs" />
+    <Compile Include="SimpleAccountControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

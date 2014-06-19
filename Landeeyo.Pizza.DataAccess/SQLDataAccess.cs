@@ -9,11 +9,11 @@ using System.Linq;
 
 namespace Landeeyo.Pizza.DataAccessLayer
 {
-    public class SQLFacade : IDataAccess
+    public class SQLDataAccess : IDataAccess
     {
         private IUnitOfWork _unitOfWork;
 
-        public SQLFacade(IUnitOfWork unitOfWork)
+        public SQLDataAccess(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
