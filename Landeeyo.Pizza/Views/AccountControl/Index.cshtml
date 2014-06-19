@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*This'll be shown if logged*@
+<div class="feed">
+</div>
+
+@*This'll be shown of ~logged*@
+<div class="auth-form">
+    <div class="auth-form-header">
+        Authorize
+    </div>
+    <div class="auth-form-body">
+        <div class="auth-form-body-top">
+            <div class="button-signin">
+                Sign in
+            </div>
+            <div class="button-signup">
+                Sign up
+            </div>
+        </div>
+        <div class="auth-form-body-bottom">
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Fading
+            //Here we should differ whether show feed and auth-form
+            $('.auth-form').hide();
+            $('.feed').hide();
+            $('.auth-form').fadeIn('slow');
+
+        });
+    </script>
+}
